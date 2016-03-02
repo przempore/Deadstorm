@@ -14,7 +14,11 @@ function remove {
 if [ "$1" == "-b" ]; then
   buildAndMake
 elif [ "$1" == "-r" ]; then
-  bin/game/Deadstorm
+  if [ -e bin/game/Deadstorm ]; then
+    bin/game/Deadstorm
+  else
+    echo "Can't run without build before."
+  fi
 elif [ "$1" == "-d" ]; then
   remove
 elif [ "$1" == "-rb" ]; then
