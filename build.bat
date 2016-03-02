@@ -1,9 +1,7 @@
 @echo off
-set DeadstormBuilded
 
 if "%1" == "-b" (
    	call :build
-   	set DeadstormBuilded=1
    	goto eof
 	)
 
@@ -13,7 +11,7 @@ if "%1" == "-d" (
 	)
 
 if "%1" == "-r" (
-	if %DeadstormBuilded%  == 1 (
+	if exist bin\game\Debug\Deadstorm.exe (
 		if not exist bin\game\Debug\SDL2.dll (
 			copy %SDL2%\lib\x86\SDL2.dll bin\game\Debug\
 			)
@@ -48,7 +46,6 @@ exit /B 0
 
 :remove
 rmdir /s /q bin
-set DeadstormBuilded=0
 exit /B 0
 
 :noArgs
