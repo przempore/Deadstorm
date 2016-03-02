@@ -11,13 +11,18 @@ function remove {
   rm -rf bin/
 }
 
-if [ -z "$1" ]; then
+if [ "$1" == "-b" ]; then
   buildAndMake
-elif [ "$1" == "run" ]; then
+elif [ "$1" == "-r" ]; then
   bin/game/Deadstorm
-elif [ "$1" == "clean" ]; then
+elif [ "$1" == "-d" ]; then
   remove
-elif [ "$1" == "rebuild" ]; then
+elif [ "$1" == "-rb" ]; then
   remove
   buildAndMake
+else 
+  echo "  -b build
+  -r run
+  -d remove
+  -rb rebuild"
 fi
