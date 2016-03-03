@@ -22,7 +22,7 @@ if "%1" == "-r" (
 		goto eof
 		
 		)
-	echo "Can't run without build."
+    echo "Can't run without build before."
 	goto eof
 	)
 

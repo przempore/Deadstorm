@@ -1,5 +1,5 @@
-#ifndef DEADSTORM_APPLICATION_HPP
-#define DEADSTORM_APPLICATION_HPP
+#ifndef APPLICATION_HPP
+#define APPLICATION_HPP
 
 #include "gem/Application.hpp"
 
@@ -18,4 +18,4 @@ namespace Game
 	};
 }
 
-#endif //DEADSTORM_APPLICATION_HPP
+#endif //APPLICATION_HPP
