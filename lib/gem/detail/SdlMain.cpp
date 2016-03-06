@@ -75,7 +75,7 @@ bool Startup()
 
 	if( !( IMG_Init( flags ) & flags ) )
 	{
-		//return false;
+		return false;
 	}
 
 	return true;
