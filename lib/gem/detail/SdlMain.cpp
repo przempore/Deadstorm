@@ -28,7 +28,7 @@ namespace Detail
 namespace
 {
 const char* g_applicationName{
-	"Gem Application"
+	"Deadstorm"
 };
 
 const int g_screenWidth{
