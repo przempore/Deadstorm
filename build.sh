@@ -11,6 +11,14 @@ function remove {
   rm -rf bin/
 }
 
+function test {
+  if [ -e bin/test/runUnitTests ]; then
+    bin/test/runUnitTests
+  else
+    echo "Can't run tests without build before."
+  fi
+}
+
 if [ "$1" == "-b" ]; then
   buildAndMake
 elif [ "$1" == "-r" ]; then
@@ -25,11 +33,7 @@ elif [ "$1" == "-rb" ]; then
   remove
   buildAndMake
 elif [ "$1" == "-t" ]; then
-  if [ -e bin/test/runUnitTests ]; then
-    bin/test/runUnitTests
-  else
-    echo "Can't run tests without build before."
-  fi
+  test
 else
   echo "  -b build
   -r run
