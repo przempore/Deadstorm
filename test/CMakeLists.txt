@@ -36,8 +36,6 @@ file(GLOB test_SRC
         src/gem/*.cpp
         src/game/*.cpp)
 
-#enable_testing()
-#include_directories(${gtest_SOURCE_DIR}/include ${${PROJECT_NAME}_SOURCE_DIR}/src ../lib ../game)
 add_executable(runUnitTests ${test_SRC} $<TARGET_OBJECTS:Deadstorm_obj>)
 
 target_link_libraries(runUnitTests gtest gmock_main gem)
