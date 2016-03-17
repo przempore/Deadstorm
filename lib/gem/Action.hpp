@@ -16,7 +16,7 @@ namespace Gem
         inline virtual ~Action() {}
 
     public:
-        set() = 0;
+        virtual void Reset() = 0;
         virtual void Update(float dt) = 0;
         virtual ActionPtr Reversed() const = 0;
     };
