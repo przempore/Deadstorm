@@ -8,7 +8,6 @@ file(GLOB gem_SRC
    gem/detail/*.hpp
    gem/detail/*.cpp
    gem/detail/*.inl
-   gem/*.h
    gem/*.inl
    pugixml/*.cpp
    pugixml/*.hpp
