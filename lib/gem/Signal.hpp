@@ -7,18 +7,19 @@
 #define GEM_SIGNAL(signal, args) \
   public:   \
     inline void Add##signal##Listener(  \
-      const std::function<void##args > &listener)  \
+      const std::function<void args > &listener)  \
 { \
   m_##signal##Listeners.push_front(listener); \
 } \
   \
 protected:  \
- std::forward_list<std::function<void##args > >	\
+ std::forward_list<std::function<void args > >	\
  	m_##signal##Listeners;
 
 #define GEM_EMIT(signal, args)	\
  	for (auto func : m_##signal##Listeners)	\
- 		func##args;
+	    func args;
+// 		func##args;
 
 #define GEM_CONNECT0(emitter, signal, observer, slot)	\
  {	\
