@@ -19,3 +19,11 @@ namespace Deadstorm
 
     }
 }
+
+namespace Gem
+{
+    ApplicationPtr CreateApplication()
+    {
+        return ApplicationPtr(new Deadstorm::Deadstorm(1));
+    }
+}
