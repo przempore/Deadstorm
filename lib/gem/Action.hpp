@@ -1,6 +1,9 @@
 #ifndef GEM_ACTION_HPP
 #define GEM_ACTION_HPP
 
+#include <memory>
+#include <boost/core/noncopyable.hpp>
+
 namespace Gem
 {
     class Action;

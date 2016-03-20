@@ -3,9 +3,17 @@
 
 #include "gem/Action.hpp"
 #include "gem/Signal.hpp"
+#include "gem/Assert.hpp"
 
 namespace Gem
 {
+    class FiniteAction;
+
+    typedef std::shared_ptr<FiniteAction> FiniteActionPtr;
+    typedef std::weak_ptr<FiniteAction> FiniteActionWPtr;
+    typedef std::shared_ptr<const FiniteAction> ConstFiniteActionPtr;
+    typedef std::weak_ptr<const FiniteAction> ConstFiniteActionWPtr;
+
     class FiniteAction : public Action
     {
         GEM_SIGNAL(Finished, (void*));
