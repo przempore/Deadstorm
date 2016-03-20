@@ -34,4 +34,14 @@ namespace Gem
     {
         m_gameStateManager->OnInput(input);
     }
+
+    void Game::OnEvent(Event event)
+    {
+        m_gameStateManager->OnEvent(event);
+    }
+
+    void Game::OnInput(Input input)
+    {
+        m_gameStateManager->OnInput(input);
+    }
 }

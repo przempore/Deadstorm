@@ -1,4 +1,5 @@
 #include "Application.hpp"
+#include "Deadstorm.hpp"
 
 namespace Deadstorm
 {
@@ -37,6 +38,6 @@ namespace Gem
 {
     ApplicationPtr CreateApplication()
     {
-        return ApplicationPtr(new Deadstorm::Application);
+        return ApplicationPtr(new Deadstorm::Deadstorm(1));
     }
 }
