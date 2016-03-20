@@ -31,6 +31,19 @@ if "%1" == "-rb" (
    	call :build
    	goto eof
 	)
+if "%1" == "-t" (
+	if exist bin\test\Debug\runUnitTests.exe (
+		if not exist bin\test\Debug\SDL2.dll (
+			copy %SDL2%\lib\x86\SDL2.dll bin\test\Debug\
+			)
+		if not exist bin\test\Debug\SDL2_image.dll (
+			copy %SDL2_image%\lib\x86\SDL2_image.dll bin\test\Debug\
+			)
+		bin\test\Debug\runUnitTests.exe
+		goto eof
+		
+		)
+	)
 
 if "%1" == "" (
 	goto :noArgs
