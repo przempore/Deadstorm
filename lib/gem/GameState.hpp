@@ -16,7 +16,7 @@ namespace Gem
 	public:
 		virtual void OnEnter(void* owner, int previousStateId) {}
 		virtual void OnExit(void* owner, int nextStateId) {}
-		virtual void OnSusprend(void* owner, int pushedStateId) {}
+		virtual void OnSuspend(void* owner, int pushedStateId) {}
 		virtual void OnResume(void* owner, int poppedStateId) {}
 
 	public:
