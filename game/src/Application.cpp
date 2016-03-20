@@ -1,33 +1,33 @@
 #include "Application.hpp"
 
-namespace Game
+namespace Deadstorm
 {
-    void Game::OnStartup()
+    void Application::OnStartup()
     {
 
     }
 
-    void Game::OnShutdown()
+    void Application::OnShutdown()
     {
 
     }
 
-    void Game::OnUpdate(float dt)
+    void Application::OnUpdate(float dt)
     {
 
     }
 
-    void Game::OnDraw(Gem::Graphics &graphics)
+    void Application::OnDraw(Gem::Graphics &graphics)
     {
 
     }
 
-    void Game::OnEvent(Gem::Event event)
+    void Application::OnEvent(Gem::Event event)
     {
 
     }
 
-    void Game::OnInput(Gem::Input input)
+    void Application::OnInput(Gem::Input input)
     {
 
     }
@@ -37,6 +37,6 @@ namespace Gem
 {
     ApplicationPtr CreateApplication()
     {
-        return ApplicationPtr(new Game::Game);
+        return ApplicationPtr(new Deadstorm::Application);
     }
 }

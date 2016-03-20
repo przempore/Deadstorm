@@ -3,9 +3,9 @@
 
 #include "gem/Application.hpp"
 
-namespace Game
+namespace Deadstorm
 {
-	class Game : public Gem::Application
+	class Application : public Gem::Application
 	{
 
 	public:
