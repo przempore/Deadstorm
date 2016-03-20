@@ -4,7 +4,6 @@
 #include <gem/Content.hpp>
 #include <gem/detail/SdlGraphics.hpp>
 
-class GraphicsPtr;
 namespace Deadstorm
 {
     GamePlayState::GamePlayState()

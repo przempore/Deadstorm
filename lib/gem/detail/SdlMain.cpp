@@ -193,6 +193,16 @@ int main(int argv, char **argc)
                 }
                     break;
 
+                case SDL_MOUSEBUTTONUP:
+                {
+                    Gem::TouchInput input;
+
+                    SDL_GetMouseState(&input.m_point.m_x, &input.m_point.m_y);
+                    input.m_action = Gem::TouchAction::Up;
+
+                    application->OnInput(Gem::Input(input));
+                }
+                    break;
                 default:
                 {
                 }
