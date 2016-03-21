@@ -9,7 +9,7 @@
 namespace Deadstorm
 {
     MenuState::MenuState()
-    {}
+    { }
 
     MenuState::~MenuState()
     { }
@@ -32,7 +32,7 @@ namespace Deadstorm
     { }
 
     void MenuState::OnUpdate(float dt, bool suspended)
-    {}
+    { }
 
     void MenuState::OnDraw(Gem::Graphics &graphics, bool suspended)
     {
@@ -47,10 +47,11 @@ namespace Deadstorm
         std::cout << input.which() << std::endl;
         if (input.which() == 1)
         {
-            const Gem::TouchInput* touchInput = &boost::get<Gem::TouchInput>(input);
+            const Gem::TouchInput *touchInput = &boost::get<Gem::TouchInput>(input);
             std::cout << "point: " << touchInput->m_point.m_x << ", " << touchInput->m_point.m_y << std::endl;
-            if (touchInput->m_point.m_x > 400
-                    && touchInput->m_point.m_y > 400)
+            if (touchInput->m_action == Gem::TouchAction::Down
+                && touchInput->m_point.m_x > 400
+                && touchInput->m_point.m_y > 400)
             {
                 g_gameStateManager.ChangeState(GameStateId_GamePlay);
             }
