@@ -4,7 +4,7 @@
 #include <gem/GameStateManager.hpp>
 #include "PreloaderState.hpp"
 #include "MenuState.hpp"
-#include "GamePlayState.hpp"
+#include "GameplayState.hpp"
 
 namespace Deadstorm
 {
@@ -20,7 +20,7 @@ namespace Deadstorm
     {
         Gem::GameStatePtr preloaderState(new PreloaderState());
         Gem::GameStatePtr menuState(new MenuState());
-        Gem::GameStatePtr gamePlayState(new GamePlayState());
+        Gem::GameStatePtr gamePlayState(new GameplayState());
 
         g_gameStateManager.Register(GameStateId_Preloader, preloaderState);
         g_gameStateManager.Register(GameStateId_Menu, menuState);

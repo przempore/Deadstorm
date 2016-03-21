@@ -6,11 +6,11 @@
 
 namespace Deadstorm
 {
-    class GamePlayState : public Gem::GameState
+    class GameplayState : public Gem::GameState
     {
     public:
-        GamePlayState();
-        virtual ~GamePlayState();
+        GameplayState();
+        virtual ~GameplayState();
 
     public:
         virtual void OnEnter(void* owner, int previousStateId) override;

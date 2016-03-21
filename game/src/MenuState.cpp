@@ -42,9 +42,10 @@ namespace Deadstorm
         std::cout << input.which() << std::endl;
         if (input.which() == 1)
         {
-            std::cout << "point: " << boost::get<Gem::TouchInput>(input).m_point.m_x << ", " << boost::get<Gem::TouchInput>(input).m_point.m_y << std::endl;
-            if (boost::get<Gem::TouchInput>(input).m_point.m_x > 400
-                    && boost::get<Gem::TouchInput>(input).m_point.m_y > 400)
+            const Gem::TouchInput* touchInput = &boost::get<Gem::TouchInput>(input);
+            std::cout << "point: " << touchInput->m_point.m_x << ", " << touchInput->m_point.m_y << std::endl;
+            if (touchInput->m_point.m_x > 400
+                    && touchInput->m_point.m_y > 400)
             {
                 g_gameStateManager.ChangeState(GameStateId_GamePlay);
             }

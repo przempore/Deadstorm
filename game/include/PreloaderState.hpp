@@ -23,7 +23,6 @@ namespace Deadstorm
         virtual void OnEvent(const Gem::Event& event, bool suspended) override;
         virtual void OnInput(const Gem::Input& input, bool suspended) override;
     };
-
 }
 
 #endif //DEADSTORM_PRELOADERSTATE_HPP
