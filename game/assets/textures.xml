@@ -1,2 +1,2 @@
 <?xml version="1.0" ?>
-<texture-part texture="resources/images/bob.png" x="10" y="10" w="100" h="100"/>
+<texture-part texture="menu_bg.png" x="0" y="0" w="960" h="640"/>

@@ -2,6 +2,7 @@
 #define DEADSTORM_MENUSTATE_HPP
 
 
+#include <gem/Texture.hpp>
 #include "gem/GameState.hpp"
 
 namespace Deadstorm
@@ -23,6 +24,8 @@ namespace Deadstorm
         virtual void OnDraw(Gem::Graphics& graphics, bool suspended) override;
         virtual void OnEvent(const Gem::Event& event, bool suspended) override;
         virtual void OnInput(const Gem::Input& input, bool suspended) override;
+    private:
+        Gem::TexturePtr m_bg;
     };
 
 }

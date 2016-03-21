@@ -36,7 +36,9 @@ namespace Deadstorm
     {}
 
     void PreloaderState::OnDraw(Gem::Graphics &graphics, bool suspended)
-    { }
+    {
+
+    }
 
     void PreloaderState::OnEvent(const Gem::Event &event, bool suspended)
     { }

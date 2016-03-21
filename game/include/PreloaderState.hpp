@@ -1,6 +1,7 @@
 #ifndef DEADSTORM_PRELOADERSTATE_HPP
 #define DEADSTORM_PRELOADERSTATE_HPP
 
+#include <gem/TexturePart.hpp>
 #include "gem/GameState.hpp"
 
 namespace Deadstorm

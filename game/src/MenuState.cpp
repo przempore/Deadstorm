@@ -3,6 +3,8 @@
 #include "MenuState.hpp"
 
 #include <iostream>
+#include <gem/Graphics.hpp>
+#include <gem/Content.hpp>
 
 namespace Deadstorm
 {
@@ -15,6 +17,7 @@ namespace Deadstorm
     void MenuState::OnEnter(void *owner, int previousStateId)
     {
         puts("MenuState::OnEnter");
+        m_bg = g_content.Acquire<Gem::Texture>("assets/image/menu_bg.png");
     }
 
     void MenuState::OnExit(void *owner, int nextStateId)
@@ -32,7 +35,9 @@ namespace Deadstorm
     {}
 
     void MenuState::OnDraw(Gem::Graphics &graphics, bool suspended)
-    { }
+    {
+        graphics.DrawTexture(*m_bg);
+    }
 
     void MenuState::OnEvent(const Gem::Event &event, bool suspended)
     { }
