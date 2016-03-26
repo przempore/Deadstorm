@@ -22,8 +22,8 @@ namespace Gem
         virtual void OnUpdate(float dt) final;
         virtual void OnDraw(Graphics& graphics) final;
         virtual void OnEvent(const Event& event) final;
-        virtual void OnEvent(Event event);
-        virtual void OnInput(Input input);
+        virtual void OnEvent(Event event) final;
+        virtual void OnInput(Input input) final;
         virtual void OnInput(const Input& input) final;
 
     private:

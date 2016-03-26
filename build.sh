@@ -15,7 +15,9 @@ if [ "$1" == "-b" ]; then
   buildAndMake
 elif [ "$1" == "-r" ]; then
   if [ -e bin/game/Deadstorm ]; then
-    bin/game/Deadstorm
+    cd bin/game/
+    ./Deadstorm
+    cd -
   else
     echo "Can't run without build before."
   fi

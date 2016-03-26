@@ -1,8 +1,6 @@
 #include "gem/Application.hpp"
 
 #include "gem/Content.hpp"
-#include "gem/Event.hpp"
-#include "gem/Input.hpp"
 #include "gem/Logger.hpp"
 
 #include "gem/detail/SdlGraphics.hpp"
@@ -10,8 +8,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include <cstdlib>
-#include <memory>
+#include <SDL_ttf.h>
 
 #if defined( _DEBUG )
 # include <crtdbg.h>
@@ -78,12 +75,18 @@ namespace Gem
                     return false;
                 }
 
+                if (TTF_Init() == -1)
+                {
+                    return false;
+                }
+
                 return true;
             }
 
             void Shutdown()
             {
                 IMG_Quit();
+                TTF_Quit();
 
                 SDL_DestroyRenderer(g_sdlRenderer);
                 g_sdlRenderer = nullptr;

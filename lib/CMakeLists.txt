@@ -16,4 +16,4 @@ file(GLOB gem_SRC
 add_library(gem STATIC ${gem_SRC})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/detail)
-target_link_libraries(gem ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY})
+target_link_libraries(gem ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
