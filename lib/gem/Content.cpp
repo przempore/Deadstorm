@@ -20,6 +20,8 @@ AssetPtr Content::Acquire( const std::string& path,
 {
 	auto found = m_assets.find( path );
 
+	printf("path: %s\n", path.c_str());
+
 	if( found != m_assets.end() )
 	{
 		if( found->second.second )

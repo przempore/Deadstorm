@@ -8,12 +8,6 @@
 
 namespace Deadstorm
 {
-    PreloaderState::PreloaderState()
-    {}
-
-    PreloaderState::~PreloaderState()
-    { }
-
     void PreloaderState::OnEnter(void *owner, int previousStateId)
     {
         puts("PreloaderState::OnEnter");

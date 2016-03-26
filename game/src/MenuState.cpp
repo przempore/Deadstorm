@@ -8,12 +8,6 @@
 
 namespace Deadstorm
 {
-    MenuState::MenuState()
-    { }
-
-    MenuState::~MenuState()
-    { }
-
     void MenuState::OnEnter(void *owner, int previousStateId)
     {
         puts("MenuState::OnEnter");
@@ -44,11 +38,11 @@ namespace Deadstorm
 
     void MenuState::OnInput(const Gem::Input &input, bool suspended)
     {
-        std::cout << input.which() << std::endl;
+//        std::cout << input.which() << std::endl;
         if (input.which() == 1)
         {
             const Gem::TouchInput *touchInput = &boost::get<Gem::TouchInput>(input);
-            std::cout << "point: " << touchInput->m_point.m_x << ", " << touchInput->m_point.m_y << std::endl;
+//            std::cout << "point: " << touchInput->m_point.m_x << ", " << touchInput->m_point.m_y << std::endl;
             if (touchInput->m_action == Gem::TouchAction::Down
                 && touchInput->m_point.m_x > 400
                 && touchInput->m_point.m_y > 400)

@@ -2,16 +2,13 @@
 #define DEADSTORM_GAMEPLAYSTATE_HPP
 
 #include <gem/Texture.hpp>
+#include <gem/TexturePart.hpp>
 #include "gem/GameState.hpp"
 
 namespace Deadstorm
 {
     class GameplayState : public Gem::GameState
     {
-    public:
-        GameplayState();
-        virtual ~GameplayState();
-
     public:
         virtual void OnEnter(void* owner, int previousStateId) override;
         virtual void OnExit(void* owner, int nextStateId) override;
@@ -26,6 +23,7 @@ namespace Deadstorm
 
     private:
         Gem::ConstTexturePtr m_grass;
+        Gem::TexturePartPtr m_rex;
     };
 
 }

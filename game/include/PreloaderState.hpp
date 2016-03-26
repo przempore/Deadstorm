@@ -9,10 +9,6 @@ namespace Deadstorm
     class PreloaderState : public Gem::GameState
     {
     public:
-        PreloaderState();
-        virtual ~PreloaderState();
-
-    public:
         virtual void OnEnter(void* owner, int previousStateId) override;
         virtual void OnExit(void* owner, int nextStateId) override;
         virtual void OnSuspend(void* owner, int pushedStateId) override;
