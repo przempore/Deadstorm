@@ -24,6 +24,7 @@ namespace Deadstorm
     private:
         Gem::ConstTexturePtr m_grass;
         Gem::TexturePartPtr m_rex;
+        Gem::Rectangle m_rexMovingRect;
 
         bool wasShowed = false;
     };

@@ -81,6 +81,13 @@ namespace Gem
                                   const Rectangle &destinationRectangle,
                                   const Color &color,
                                   BlendMode blendMode)
+    { }
+
+    void SdlGraphics::DrawTexture(const Texture &texture,
+                                  const Rectangle &destinationRectangle,
+                                  const Rectangle *const sourceRectangle,
+                                  const Color &color,
+                                  BlendMode blendMode)
     {
         GEM_ASSERT(g_sdlRenderer);
 
@@ -103,34 +110,27 @@ namespace Gem
         SDL_QueryTexture(sdlTexture.Texture(), NULL, NULL, &w, &h);
 
         SDL_Rect rect;
-        rect.h = destinationRectangle.m_height / 4;
-        rect.w = destinationRectangle.m_width / 3;
+        rect.h = destinationRectangle.m_height;
+        rect.w = destinationRectangle.m_width;
         rect.x = destinationRectangle.m_x;
         rect.y = destinationRectangle.m_y;
 
         SDL_Rect crop;
-        crop.h = destinationRectangle.m_height / 4;
-        crop.w = destinationRectangle.m_width / 3;
-        crop.x = destinationRectangle.m_x;
-        crop.y = destinationRectangle.m_y;
+        crop.h = sourceRectangle->m_height;
+        crop.w = sourceRectangle->m_width;
+        crop.x = sourceRectangle->m_x;
+        crop.y = sourceRectangle->m_y;
 
         if (SDL_RenderCopy(g_sdlRenderer,
                            sdlTexture.Texture(),
-                           &crop,
-                           &rect))
+                           &rect,
+                           &crop))
         {
             throw Error{
                     SDL_GetError()
             };
         }
     }
-
-    void SdlGraphics::DrawTexture(const Texture &texture,
-                                  const Rectangle &destinationRectangle,
-                                  const Rectangle *const sourceRectangle,
-                                  const Color &color,
-                                  BlendMode blendMode)
-    { }
 
     void SdlGraphics::DrawTexture(const Texture &texture,
                                   const Rectangle &destinationRectangle,

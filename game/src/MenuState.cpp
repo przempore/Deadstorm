@@ -12,6 +12,7 @@ namespace Deadstorm
     {
         puts("MenuState::OnEnter");
         m_bg = g_content.Acquire<Gem::Texture>("assets/image/menu_bg.png");
+        g_gameStateManager.ChangeState(GameStateId_GamePlay);   // test
     }
 
     void MenuState::OnExit(void *owner, int nextStateId)

@@ -29,10 +29,12 @@ namespace Gem
         }
         printf("file: %s, texture-part: %s\n", __FILE__,
                string(doc.child("texture-part").attribute("texture").value()).c_str());
+        string texPath = doc.child("texture-part").attribute("path").value();
+        string file = doc.child("texture-part").attribute("texture").value();
         printf("file: %s, path: %s\n", __FILE__, string(doc.child("texture-part").attribute("path").value()).c_str());
 
         TexturePtr texture{
-                g_content.Acquire<Gem::Texture>(string(doc.child("texture-part").attribute("texture").value()),
+                g_content.Acquire<Gem::Texture>(texPath + file/*string(doc.child("texture-part").attribute("texture").value())*/,
                                                 cache)};
 
         printf("file: %s, wymiary: %d, %d, %d, %d\n", __FILE__,

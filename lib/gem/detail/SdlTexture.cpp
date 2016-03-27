@@ -70,7 +70,7 @@ namespace Gem
 
         SDL_TexturePtr texture{
                 SDL_CreateTextureFromSurface(g_sdlRenderer,
-                                             &(*surface))
+                                             surface.get())
         };
 
         if (!texture)
