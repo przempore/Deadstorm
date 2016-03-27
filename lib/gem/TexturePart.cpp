@@ -14,7 +14,7 @@ using namespace std;
 
 namespace Gem
 {
-    AssetPtr TexturePart::Load(const std::string& path,
+    AssetPtr TexturePart::Load(const std::string &path,
                                bool cache)
     {
         xml_document doc;
@@ -27,11 +27,19 @@ namespace Gem
         {
             throw Error{"error while parsing texture part asset definition"};
         }
-        printf("file: %s, texture-part: %s\n", __FILE__, string(doc.child("texture-part").attribute("texture").value()).c_str());
+        printf("file: %s, texture-part: %s\n", __FILE__,
+               string(doc.child("texture-part").attribute("texture").value()).c_str());
         printf("file: %s, path: %s\n", __FILE__, string(doc.child("texture-part").attribute("path").value()).c_str());
 
-        TexturePtr texture{g_content.Acquire<Gem::Texture>(string(doc.child("texture-part").attribute("texture").value()),
-                                                           cache)};
+        TexturePtr texture{
+                g_content.Acquire<Gem::Texture>(string(doc.child("texture-part").attribute("texture").value()),
+                                                cache)};
+
+        printf("file: %s, wymiary: %d, %d, %d, %d\n", __FILE__,
+               lexical_cast<int>(doc.child("texture-part").attribute("x").value()),
+               lexical_cast<int>(doc.child("texture-part").attribute("y").value()),
+               lexical_cast<int>(doc.child("texture-part").attribute("w").value()),
+               lexical_cast<int>(doc.child("texture-part").attribute("h").value()));
 
         Rectangle sourceRectangle{lexical_cast<int>(doc.child("texture-part").attribute("x").value()),
                                   lexical_cast<int>(doc.child("texture-part").attribute("y").value()),

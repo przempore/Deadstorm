@@ -97,15 +97,14 @@ namespace Gem
         };
 
         SDL_SetRenderDrawColor(g_sdlRenderer, color.m_r, color.m_g, color.m_b, color.m_a);
-//        SDL_RenderClear(g_sdlRenderer);
 
         int w = texture.Width();
         int h = texture.Height();
         SDL_QueryTexture(sdlTexture.Texture(), NULL, NULL, &w, &h);
 
         SDL_Rect rect;
-        rect.h = destinationRectangle.m_height;
-        rect.w = destinationRectangle.m_width;
+        rect.h = destinationRectangle.m_height / 4;
+        rect.w = destinationRectangle.m_width / 3;
         rect.x = destinationRectangle.m_x;
         rect.y = destinationRectangle.m_y;
 

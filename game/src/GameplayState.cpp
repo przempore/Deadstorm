@@ -15,7 +15,7 @@ namespace Deadstorm
         g_content.Register("xml", Gem::TexturePart::Load);
         try
         {
-            m_rex = g_content.Acquire<Gem::TexturePart>("assets/textures.xml", true);
+            m_rex = g_content.Acquire<Gem::TexturePart>("assets/textures.xml", false);
         }
         catch(Gem::Error er)
         {
@@ -39,6 +39,12 @@ namespace Deadstorm
 
     void GameplayState::OnDraw(Gem::Graphics &graphics, bool suspended)
     {
+        if (!wasShowed)
+        {
+            printf("wymiary: %dx%d", m_rex->SourceRectangle().m_height, m_rex->SourceRectangle().m_width);
+            wasShowed = true;
+        }
+
         graphics.Clear(Gem::Color::s_white);
         graphics.DrawTexture(*m_grass);
         graphics.DrawTexture(*m_rex->Texture(), m_rex->SourceRectangle(), Gem::Color::s_black);
