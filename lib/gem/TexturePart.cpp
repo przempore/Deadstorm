@@ -19,12 +19,16 @@ namespace Gem
     {
         xml_document doc;
 
+        printf("file: %s, path: %s\n", __FILE__, path.c_str());
+
         xml_parse_result result{doc.load_file(path.c_str())};
 
         if (!result)
         {
             throw Error{"error while parsing texture part asset definition"};
         }
+        printf("file: %s, texture-part: %s\n", __FILE__, string(doc.child("texture-part").attribute("texture").value()).c_str());
+        printf("file: %s, path: %s\n", __FILE__, string(doc.child("texture-part").attribute("path").value()).c_str());
 
         TexturePtr texture{g_content.Acquire<Gem::Texture>(string(doc.child("texture-part").attribute("texture").value()),
                                                            cache)};
@@ -32,7 +36,7 @@ namespace Gem
         Rectangle sourceRectangle{lexical_cast<int>(doc.child("texture-part").attribute("x").value()),
                                   lexical_cast<int>(doc.child("texture-part").attribute("y").value()),
                                   lexical_cast<int>(doc.child("texture-part").attribute("w").value()),
-                                  lexical_cast<int>(doc.child("texture-part").attribute("w").value())};
+                                  lexical_cast<int>(doc.child("texture-part").attribute("h").value())};
 
         return AssetPtr{new TexturePart{texture,
                                         sourceRectangle}};

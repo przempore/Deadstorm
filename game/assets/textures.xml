@@ -1,2 +1,2 @@
 <?xml version="1.0" ?>
-<texture-part texture="assets/image/actor/rex.png" x="0" y="0" w="96" h="128"/>
+<texture-part path="dupa" texture="rex.png" x="0" y="0" w="96" h="128"/>

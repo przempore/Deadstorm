@@ -4,6 +4,7 @@
 #include <gem/Content.hpp>
 #include <gem/detail/SdlGraphics.hpp>
 #include <gem/Error.hpp>
+#include <gem/Color.hpp>
 
 namespace Deadstorm
 {
@@ -38,8 +39,9 @@ namespace Deadstorm
 
     void GameplayState::OnDraw(Gem::Graphics &graphics, bool suspended)
     {
+        graphics.Clear(Gem::Color::s_white);
         graphics.DrawTexture(*m_grass);
-        graphics.DrawTexture(*m_rex->Texture());
+        graphics.DrawTexture(*m_rex->Texture(), m_rex->SourceRectangle(), Gem::Color::s_black);
     }
 
     void GameplayState::OnEvent(const Gem::Event &event, bool suspended)

@@ -53,10 +53,8 @@ namespace Gem
             }
         };
 
-        typedef unique_ptr<SDL_Surface, decltype(SDL_SurfaceDeleter)>
-                SDL_SurfacePtr;
-        typedef unique_ptr<SDL_Texture, SDL_TextureDeleter>
-                SDL_TexturePtr;
+        typedef unique_ptr<SDL_Surface, decltype(SDL_SurfaceDeleter)> SDL_SurfacePtr;
+        typedef unique_ptr<SDL_Texture, SDL_TextureDeleter> SDL_TexturePtr;
 
         SDL_SurfacePtr surface{
                 IMG_Load(path),

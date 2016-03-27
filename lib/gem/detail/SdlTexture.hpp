@@ -7,33 +7,35 @@ struct SDL_Texture;
 
 namespace Gem
 {
-	class SdlTexture;
+    class SdlTexture;
 
-	typedef std::shared_ptr< SdlTexture > SdlTexturePtr;
+    typedef std::shared_ptr<SdlTexture> SdlTexturePtr;
 
-	class SdlTexture : public Texture
-	{
-	public:
-		SdlTexture( SDL_Texture* texture,
-					int width,
-					int height );
-		virtual ~SdlTexture();
+    class SdlTexture : public Texture
+    {
+    public:
+        SdlTexture(SDL_Texture *texture,
+                   int width,
+                   int height);
 
-	public:
-		static SdlTexturePtr Load( const char* path );
+        virtual ~SdlTexture();
 
-	public:
-		virtual int Width() const;
-		virtual int Height() const;
+    public:
+        static SdlTexturePtr Load(const char *path);
 
-	public:
-		inline SDL_Texture* Texture() const;
+    public:
+        virtual int Width() const;
 
-	private:
-		SDL_Texture* m_texture;
-		int          m_width;
-		int          m_height;
-	};
+        virtual int Height() const;
+
+    public:
+        inline SDL_Texture *Texture() const;
+
+    private:
+        SDL_Texture *m_texture;
+        int m_width;
+        int m_height;
+    };
 }
 
 #include "gem/detail/SdlTexture.inl"
