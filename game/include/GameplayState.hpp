@@ -24,7 +24,6 @@ namespace Deadstorm
 
     private:
         Gem::ConstTexturePtr m_grass;
-        Gem::Rectangle m_rexMovingRect;
         AnimSpritePtr m_rex;
     };
 
