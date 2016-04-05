@@ -30,10 +30,15 @@ namespace Deadstorm
         return m_texturePart->SourceRectangle();
     }
 
-    void AnimSprite::SetPlace(int x, int y)
+    inline void AnimSprite::SetPlace(int x, int y)
     {
         m_movingRect.m_x = x;
         m_movingRect.m_y = y;
     }
 
+    inline void AnimSprite::SetDisplaySize(int w, int h)
+    {
+        m_movingRect.m_width = w;
+        m_movingRect.m_height = h;
+    }
 }

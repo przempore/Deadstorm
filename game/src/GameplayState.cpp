@@ -14,7 +14,7 @@ namespace Deadstorm
         m_grass = g_content.Acquire<Gem::Texture>("assets/image/grass.jpg", true);
         g_content.Register("xml", Gem::TexturePart::Load);
 
-        m_rex.reset(new AnimSprite("assets/textures.xml", 4, 3, true));
+        m_rex.reset(new AnimSprite("assets/textures.xml", 4, 3, 32, 48, true));
     }
 
     void GameplayState::OnExit(void *owner, int nextStateId)
@@ -52,6 +52,7 @@ namespace Deadstorm
             if (touchInput->m_action == Gem::TouchAction::Down)
             {
                 m_rex->SetPlace(touchInput->m_point.m_x, touchInput->m_point.m_y);
+                std::cerr << "x: " << touchInput->m_point.m_x << ", y: " <<  touchInput->m_point.m_y << std::endl;
             }
         }
     }

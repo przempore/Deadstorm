@@ -5,7 +5,7 @@
 
 namespace Deadstorm
 {
-    AnimSprite::AnimSprite(const std::string &path, int row, int col, bool cached)
+    AnimSprite::AnimSprite(const std::string &path, int row, int col, int dw, int dh, bool cached)
             : m_row(row),
               m_col(col)
     {
@@ -24,6 +24,7 @@ namespace Deadstorm
                         m_texturePart->SourceRectangle().m_height};
         SetFrame(0, 0);
         SetPlace(25, 38);
+        SetDisplaySize(dw, dh);
     }
 
     AnimSprite::~AnimSprite()

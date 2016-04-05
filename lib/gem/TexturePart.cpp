@@ -27,28 +27,17 @@ namespace Gem
         {
             throw Error{"error while parsing texture part asset definition"};
         }
-        printf("file: %s, texture-part: %s\n", __FILE__,
-               string(doc.child("texture-part").attribute("texture").value()).c_str());
         string texPath = doc.child("texture-part").attribute("path").value();
         string file = doc.child("texture-part").attribute("texture").value();
-        printf("file: %s, path: %s\n", __FILE__, string(doc.child("texture-part").attribute("path").value()).c_str());
 
-        TexturePtr texture{
-                g_content.Acquire<Gem::Texture>(texPath + file/*string(doc.child("texture-part").attribute("texture").value())*/,
+        TexturePtr texture{g_content.Acquire<Gem::Texture>(texPath + file/*string(doc.child("texture-part").attribute("texture").value())*/,
                                                 cache)};
-
-        printf("file: %s, wymiary: %d, %d, %d, %d\n", __FILE__,
-               lexical_cast<int>(doc.child("texture-part").attribute("x").value()),
-               lexical_cast<int>(doc.child("texture-part").attribute("y").value()),
-               lexical_cast<int>(doc.child("texture-part").attribute("w").value()),
-               lexical_cast<int>(doc.child("texture-part").attribute("h").value()));
 
         Rectangle sourceRectangle{lexical_cast<int>(doc.child("texture-part").attribute("x").value()),
                                   lexical_cast<int>(doc.child("texture-part").attribute("y").value()),
                                   lexical_cast<int>(doc.child("texture-part").attribute("w").value()),
                                   lexical_cast<int>(doc.child("texture-part").attribute("h").value())};
 
-        return AssetPtr{new TexturePart{texture,
-                                        sourceRectangle}};
+        return AssetPtr{new TexturePart{texture, sourceRectangle}};
     }
 }

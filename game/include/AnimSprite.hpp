@@ -9,7 +9,7 @@ namespace Deadstorm
     class AnimSprite
     {
     public:
-        AnimSprite(const std::string &path, int row, int col, bool cached = false);
+        AnimSprite(const std::string &path, int row, int col, int dw, int dh, bool cached = false);
 
         virtual ~AnimSprite();
 
@@ -26,7 +26,7 @@ namespace Deadstorm
 
     public:
         inline void SetPlace(int x, int y);
-
+        inline void SetDisplaySize(int w, int h);
     private:
         Gem::TexturePartPtr m_texturePart;
         Gem::Rectangle m_movingRect;
