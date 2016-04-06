@@ -1,13 +1,18 @@
 #include <iostream>
 #include <gem/Content.hpp>
 #include <gem/Error.hpp>
+#include <SDL_timer.h>
 #include "AnimSprite.hpp"
 
 namespace Deadstorm
 {
-    AnimSprite::AnimSprite(const std::string &path, int row, int col, int dw, int dh, bool cached)
+    using namespace std;
+
+    AnimSprite::AnimSprite(const std::string &path, int row, int col, bool cached)
             : m_row(row),
-              m_col(col)
+              m_col(col),
+              m_animDeelay(0),
+              m_currentFrame(0)
     {
         try
         {
@@ -18,25 +23,49 @@ namespace Deadstorm
             std::cerr << er.What() << std::endl;
         }
 
-        m_movingRect = {m_texturePart->SourceRectangle().m_x,
-                        m_texturePart->SourceRectangle().m_y,
-                        m_texturePart->SourceRectangle().m_width,
-                        m_texturePart->SourceRectangle().m_height};
+        m_movingRect = {SourceRectangle().m_x,
+                        SourceRectangle().m_y,
+                        SourceRectangle().m_width,
+                        SourceRectangle().m_height};
+
+        m_rectangleWidth = SourceRectangle().m_width / m_col;
+        m_rectangleHeight = SourceRectangle().m_height / m_row;
+
+        SourceRectangle().Reset(0 * m_rectangleWidth,
+                                0 * m_rectangleHeight,
+                                SourceRectangle().m_width / m_col,
+                                SourceRectangle().m_height / m_row);
         SetFrame(0, 0);
-        SetPlace(25, 38);
+        SetPlace(0, 0);
+    }
+
+    AnimSprite::AnimSprite(const std::string &path, int row, int col, int dw, int dh, bool cached)
+            : AnimSprite(path, row, col, cached)
+    {
         SetDisplaySize(dw, dh);
     }
 
     AnimSprite::~AnimSprite()
     { }
 
-    void AnimSprite::SetFrame(int x, int y)
+    void AnimSprite::Animate(int beginFrame, int endFrame, int row, float deelay)
     {
-        m_texturePart->SourceRectangle().Reset(x * (m_texturePart->SourceRectangle().m_width),
-                                               y * (m_texturePart->SourceRectangle().m_height),
-                                               m_texturePart->SourceRectangle().m_width / m_col,
-                                               m_texturePart->SourceRectangle().m_height / m_row);
+        if ((m_animDeelay + deelay) > SDL_GetTicks())
+        {
+            return;
+        }
+
+        if (endFrame <= m_currentFrame)
+        {
+            m_currentFrame = beginFrame;
+        }
+        else
+        {
+            ++m_currentFrame;
+        }
+
+        SetFrame(m_currentFrame, row);
+
+        m_animDeelay = SDL_GetTicks();
     }
-
-
 }

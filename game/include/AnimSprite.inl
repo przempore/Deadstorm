@@ -41,4 +41,10 @@ namespace Deadstorm
         m_movingRect.m_width = w;
         m_movingRect.m_height = h;
     }
+
+    inline void AnimSprite::SetFrame(int x, int y)
+    {
+        SourceRectangle().m_x = x * m_rectangleWidth;
+        SourceRectangle().m_y = y * m_rectangleHeight;
+    }
 }

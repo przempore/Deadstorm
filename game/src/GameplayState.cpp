@@ -14,7 +14,7 @@ namespace Deadstorm
         m_grass = g_content.Acquire<Gem::Texture>("assets/image/grass.jpg", true);
         g_content.Register("xml", Gem::TexturePart::Load);
 
-        m_rex.reset(new AnimSprite("assets/textures.xml", 4, 3, 32, 48, true));
+        m_rex.reset(new AnimSprite("assets/textures.xml", 4, 3, 32, 40, true));
     }
 
     void GameplayState::OnExit(void *owner, int nextStateId)
@@ -29,7 +29,9 @@ namespace Deadstorm
     { }
 
     void GameplayState::OnUpdate(float dt, bool suspended)
-    { }
+    {
+        m_rex->Animate(0, 2, 0, 200);
+    }
 
     void GameplayState::OnDraw(Gem::Graphics &graphics, bool suspended)
     {
@@ -39,6 +41,7 @@ namespace Deadstorm
                              m_rex->SourceRectangle(),
                              &m_rex->Rectangle(),
                              Gem::Color::s_black);
+
     }
 
     void GameplayState::OnEvent(const Gem::Event &event, bool suspended)
