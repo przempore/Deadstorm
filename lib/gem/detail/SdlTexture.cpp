@@ -43,6 +43,8 @@ namespace Gem
 //            SDL_DestroyTexture(texture);
 //        };
 
+        printf("\tfile: %s, path: %s\n", __FILE__, path);
+
         struct SDL_TextureDeleter
         {
             void operator()(SDL_Texture *texture) const
@@ -51,10 +53,8 @@ namespace Gem
             }
         };
 
-        typedef unique_ptr<SDL_Surface, decltype(SDL_SurfaceDeleter)>
-                SDL_SurfacePtr;
-        typedef unique_ptr<SDL_Texture, SDL_TextureDeleter>
-                SDL_TexturePtr;
+        typedef unique_ptr<SDL_Surface, decltype(SDL_SurfaceDeleter)> SDL_SurfacePtr;
+        typedef unique_ptr<SDL_Texture, SDL_TextureDeleter> SDL_TexturePtr;
 
         SDL_SurfacePtr surface{
                 IMG_Load(path),
@@ -70,7 +70,7 @@ namespace Gem
 
         SDL_TexturePtr texture{
                 SDL_CreateTextureFromSurface(g_sdlRenderer,
-                                             &(*surface))
+                                             surface.get())
         };
 
         if (!texture)

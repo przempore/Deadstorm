@@ -1,7 +1,9 @@
 file(GLOB game_SRC src/*.cpp
-	include/*.hpp)
+        include/*.hpp
+        include/*.inl)
 
 include_directories("include")
+include_directories("assets")
 
 add_library(Deadstorm_obj OBJECT ${game_SRC})
 add_executable(Deadstorm $<TARGET_OBJECTS:Deadstorm_obj> src/main/main.cpp)

@@ -13,39 +13,46 @@
 
 namespace Gem
 {
-	class Content : public Singleton< Content >
-	{
-	public:
-		typedef std::pair< boost::any, bool >                         AssetEntry;
-		typedef std::function< AssetPtr( const std::string&, bool ) > Loader;
-		typedef std::unordered_map< std::string, AssetEntry >         AssetEntryMap;
-		typedef std::unordered_map< std::string, Loader >             LoaderMap;
+    class Content : public Singleton<Content>
+    {
+    public:
+        typedef std::pair<boost::any, bool> AssetEntry;
+        typedef std::function<AssetPtr(const std::string &, bool)> Loader;
+        typedef std::unordered_map<std::string, AssetEntry> AssetEntryMap;
+        typedef std::unordered_map<std::string, Loader> LoaderMap;
 
-	public:
-		Content();
+    public:
+        Content();
 
-	public:
-		AssetPtr Acquire( const std::string& path,
-						  bool cache = false );
-		template< class T_ >
-		inline std::shared_ptr< T_ > Acquire( const std::string& path,
-											  bool cache = false );
-		bool Cached( const std::string& path ) const;
-		void Register( const std::string& extension,
-					   Loader loader );
-		bool Registered( const std::string& extension );
-		bool Release( const std::string& path );
-		Loader Unregister( const std::string& extension );
+    public:
+        AssetPtr Acquire(const std::string &path,
+                         bool cache = false);
 
-	private:
-		std::string Extension( const std::string& path ) const;
-		AssetPtr Load( const std::string& path,
-					   bool cache = false );
+        template<class T_>
+        inline std::shared_ptr<T_> Acquire(const std::string &path,
+                                           bool cache = false);
 
-	private:
-		AssetEntryMap m_assets;
-		LoaderMap     m_loaders;
-	};
+        bool Cached(const std::string &path) const;
+
+        void Register(const std::string &extension,
+                      Loader loader);
+
+        bool Registered(const std::string &extension);
+
+        bool Release(const std::string &path);
+
+        Loader Unregister(const std::string &extension);
+
+    private:
+        std::string Extension(const std::string &path) const;
+
+        AssetPtr Load(const std::string &path,
+                      bool cache = false);
+
+    private:
+        AssetEntryMap m_assets;
+        LoaderMap m_loaders;
+    };
 }
 
 #define g_content Gem::Content::Instance()

@@ -9,137 +9,139 @@ using namespace std;
 
 namespace Gem
 {
-Content::Content()
-{
-	Register( "png", Texture::Load );
-	Register( "gtp", TexturePart::Load );
-}
+    Content::Content()
+    {
+        Register("png", Texture::Load);
+        Register("gtp", TexturePart::Load);
+    }
 
-AssetPtr Content::Acquire( const std::string& path,
-						   bool cache )
-{
-	auto found = m_assets.find( path );
+    AssetPtr Content::Acquire(const std::string &path,
+                              bool cache)
+    {
+        auto found = m_assets.find(path);
 
-	if( found != m_assets.end() )
-	{
-		if( found->second.second )
-		{
-			return any_cast< AssetPtr >( found->second.first );
-		}
-		else
-		{
-			AssetWPtr asset = any_cast< AssetWPtr >( found->second.first );
+        printf("file: %s, path: %s\n", __FILE__, path.c_str());
 
-			if( !asset.expired() )
-			{
-				return asset.lock();
-			}
-			else
-			{
-				return Load( path, cache );
-			}
-		}
-	}
-	else
-	{
-		return Load( path, cache );
-	}
-}
+        if (found != m_assets.end())
+        {
+            if (found->second.second)
+            {
+                return any_cast<AssetPtr>(found->second.first);
+            }
+            else
+            {
+                AssetWPtr asset = any_cast<AssetWPtr>(found->second.first);
 
-bool Content::Cached( const std::string& path ) const
-{
-	auto found = m_assets.find( path );
+                if (!asset.expired())
+                {
+                    return asset.lock();
+                }
+                else
+                {
+                    return Load(path, cache);
+                }
+            }
+        }
+        else
+        {
+            return Load(path, cache);
+        }
+    }
 
-	return found != m_assets.end() ? found->second.second : false;
-}
+    bool Content::Cached(const std::string &path) const
+    {
+        auto found = m_assets.find(path);
 
-void Content::Register( const std::string& extension,
-						Content::Loader loader )
-{
-	m_loaders[ extension ] = loader;
-}
+        return found != m_assets.end() ? found->second.second : false;
+    }
 
-bool Content::Registered( const std::string& extension )
-{
-	return m_loaders.find( extension ) != m_loaders.end();
-}
+    void Content::Register(const std::string &extension,
+                           Content::Loader loader)
+    {
+        m_loaders[extension] = loader;
+    }
 
-bool Content::Release( const std::string& path )
-{
-	auto found = m_assets.find( path );
+    bool Content::Registered(const std::string &extension)
+    {
+        return m_loaders.find(extension) != m_loaders.end();
+    }
 
-	if( found != m_assets.end() )
-	{
-		m_assets.erase( found );
+    bool Content::Release(const std::string &path)
+    {
+        auto found = m_assets.find(path);
 
-		return true;
-	}
+        if (found != m_assets.end())
+        {
+            m_assets.erase(found);
 
-	return false;
-}
+            return true;
+        }
 
-Content::Loader Content::Unregister( const std::string& extension )
-{
-	auto found = m_loaders.find( extension );
+        return false;
+    }
 
-	if( found != m_loaders.end() )
-	{
-		Loader loader = found->second;
+    Content::Loader Content::Unregister(const std::string &extension)
+    {
+        auto found = m_loaders.find(extension);
 
-		m_loaders.erase( found );
+        if (found != m_loaders.end())
+        {
+            Loader loader = found->second;
 
-		return loader;
-	}
+            m_loaders.erase(found);
 
-	return nullptr;
-}
+            return loader;
+        }
 
-std::string Content::Extension( const std::string& path ) const
-{
-	string::size_type found = path.find_last_of( '.' );
+        return nullptr;
+    }
 
-	if( found == string::npos )
-	{
-		throw Error( "unsupported asset path format detected" );
-	}
+    std::string Content::Extension(const std::string &path) const
+    {
+        string::size_type found = path.find_last_of('.');
 
-	return path.substr( found + 1 );
-}
+        if (found == string::npos)
+        {
+            throw Error("unsupported asset path format detected");
+        }
 
-AssetPtr Content::Load( const std::string& path,
-						bool cache )
-{
-	GEM_ASSERT( m_assets.find( path ) == m_assets.end() );
+        return path.substr(found + 1);
+    }
 
-	std::string extension = Extension( path );
+    AssetPtr Content::Load(const std::string &path,
+                           bool cache)
+    {
+        GEM_ASSERT(m_assets.find(path) == m_assets.end());
 
-	auto found = m_loaders.find( extension );
+        std::string extension = Extension(path);
 
-	if( found != m_loaders.end() )
-	{
-		Loader loader = found->second;
+        auto found = m_loaders.find(extension);
 
-		AssetPtr asset = loader( path, cache );
+        if (found != m_loaders.end())
+        {
+            Loader loader = found->second;
 
-		if( cache )
-		{
-			m_assets[ path ] = make_pair( any( asset ), cache );
-		}
-		else
-		{
-			m_assets[ path ] = make_pair( any( AssetWPtr( asset ) ), cache );
-		}
+            AssetPtr asset = loader(path, cache);
 
-		asset->Initialize();
+            if (cache)
+            {
+                m_assets[path] = make_pair(any(asset), cache);
+            }
+            else
+            {
+                m_assets[path] = make_pair(any(AssetWPtr(asset)), cache);
+            }
 
-		return asset;
-	}
-	else
-	{
-		throw Error( "unsupported asset extension detected" );
-	}
+            asset->Initialize();
 
-	return nullptr;
-}
+            return asset;
+        }
+        else
+        {
+            throw Error("unsupported asset extension detected");
+        }
+
+        return nullptr;
+    }
 
 }

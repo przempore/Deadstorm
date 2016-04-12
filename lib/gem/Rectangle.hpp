@@ -1,6 +1,7 @@
 #ifndef GEM_RECTANGLE_HPP
 #define GEM_RECTANGLE_HPP
 
+#include <memory>
 #include "gem/Point.hpp"
 
 namespace Gem
