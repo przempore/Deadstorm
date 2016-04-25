@@ -30,7 +30,10 @@ namespace Deadstorm
 
     void GameplayState::OnUpdate(float dt, bool suspended)
     {
-        m_rex->Animate(0, 2, 0, 200);
+        if (m_rex->IsMoving())
+        {
+            m_rex->Move();
+        }
     }
 
     void GameplayState::OnDraw(Gem::Graphics &graphics, bool suspended)
@@ -41,7 +44,6 @@ namespace Deadstorm
                              m_rex->SourceRectangle(),
                              &m_rex->Rectangle(),
                              Gem::Color::s_black);
-
     }
 
     void GameplayState::OnEvent(const Gem::Event &event, bool suspended)
@@ -55,7 +57,7 @@ namespace Deadstorm
             if (touchInput->m_action == Gem::TouchAction::Down)
             {
                 m_rex->SetPlace(touchInput->m_point.m_x, touchInput->m_point.m_y);
-                std::cerr << "x: " << touchInput->m_point.m_x << ", y: " <<  touchInput->m_point.m_y << std::endl;
+                std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y << std::endl;
             }
         }
     }

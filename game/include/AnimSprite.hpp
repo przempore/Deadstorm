@@ -3,6 +3,7 @@
 
 #include <string>
 #include <gem/TexturePart.hpp>
+#include <gem/Point.hpp>
 
 namespace Deadstorm
 {
@@ -24,9 +25,12 @@ namespace Deadstorm
         inline const Gem::Rectangle& Rectangle() const;
         inline void SetPlace(int x, int y);
         inline void SetDisplaySize(int w, int h);
+        inline bool IsMoving() const;
+        inline void SetDestination(int x, int y);
 
     public:
         void Animate(int beginFrame, int endFrame, int row, float deelay);
+        void Move();
 
     private:
         Gem::TexturePartPtr m_texturePart;
@@ -37,6 +41,10 @@ namespace Deadstorm
         int m_col = 0;
         float m_animDeelay = 0;
         int m_currentFrame = 0;
+
+    private:
+        bool m_isMoving = false;
+        Gem::Point m_destination;
     };
 
     typedef std::shared_ptr<AnimSprite> AnimSpritePtr;

@@ -68,4 +68,9 @@ namespace Deadstorm
 
         m_animDeelay = SDL_GetTicks();
     }
+
+    void AnimSprite::Move()
+    {
+        Animate(0, 2, 0, 200);
+    }
 }
