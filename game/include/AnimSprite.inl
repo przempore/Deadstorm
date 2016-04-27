@@ -53,6 +53,7 @@ namespace Deadstorm
     {
         return m_isMoving;
     }
+
     inline void AnimSprite::SetDestination(int x, int y)
     {
         m_destination.m_x = x;

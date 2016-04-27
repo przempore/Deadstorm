@@ -2,6 +2,7 @@
 #include <gem/Content.hpp>
 #include <gem/Error.hpp>
 #include <SDL_timer.h>
+#include <tools/Math.hpp>
 #include "AnimSprite.hpp"
 
 namespace Deadstorm
@@ -71,6 +72,35 @@ namespace Deadstorm
 
     void AnimSprite::Move()
     {
-        Animate(0, 2, 0, 200);
+
+        if (m_movingRect.m_x < m_destination.m_x)
+        {
+            Animate(0, 2, 2, 200);
+            m_movingRect.m_x += m_movingSpeed;
+        }
+        if (m_movingRect.m_x > m_destination.m_x)
+        {
+            Animate(0, 2, 1, 200);
+            m_movingRect.m_x -= m_movingSpeed;
+        }
+        if (m_movingRect.m_y < m_destination.m_y)
+        {
+            Animate(0, 2, 0, 200);
+            m_movingRect.m_y += m_movingSpeed;
+        }
+        if (m_movingRect.m_y > m_destination.m_y)
+        {
+            Animate(0, 2, 3, 200);
+            m_movingRect.m_y -= m_movingSpeed;
+        }
+
+        m_isMoving = !isEqual<int>(m_movingRect.m_x, m_destination.m_x, m_movingSpeed)
+                || !isEqual<int>(m_movingRect.m_y, m_destination.m_y, m_movingSpeed);
+    }
+
+    void AnimSprite::SetMoving(int x, int y)
+    {
+        SetDestination(x, y);
+        m_isMoving = true;
     }
 }

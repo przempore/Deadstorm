@@ -26,11 +26,14 @@ namespace Deadstorm
         inline void SetPlace(int x, int y);
         inline void SetDisplaySize(int w, int h);
         inline bool IsMoving() const;
-        inline void SetDestination(int x, int y);
 
     public:
         void Animate(int beginFrame, int endFrame, int row, float deelay);
         void Move();
+        void SetMoving(int x, int y);
+
+    private:
+        inline void SetDestination(int x, int y);
 
     private:
         Gem::TexturePartPtr m_texturePart;
@@ -45,6 +48,7 @@ namespace Deadstorm
     private:
         bool m_isMoving = false;
         Gem::Point m_destination;
+        static const int m_movingSpeed = 2;
     };
 
     typedef std::shared_ptr<AnimSprite> AnimSpritePtr;

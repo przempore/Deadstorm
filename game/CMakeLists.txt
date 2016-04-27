@@ -1,6 +1,7 @@
 file(GLOB game_SRC src/*.cpp
         include/*.hpp
-        include/*.inl)
+        include/*.inl
+        include/tools/*.hpp)
 
 include_directories("include")
 include_directories("assets")

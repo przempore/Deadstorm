@@ -56,7 +56,7 @@ namespace Deadstorm
             const Gem::TouchInput *touchInput = &boost::get<Gem::TouchInput>(input);
             if (touchInput->m_action == Gem::TouchAction::Down)
             {
-                m_rex->SetPlace(touchInput->m_point.m_x, touchInput->m_point.m_y);
+                m_rex->SetMoving(touchInput->m_point.m_x, touchInput->m_point.m_y);
                 std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y << std::endl;
             }
         }
