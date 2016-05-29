@@ -72,30 +72,14 @@ namespace Deadstorm
 
     void AnimSprite::Move()
     {
+        float distance = Tools::GetDistance(m_movingRect.m_x, m_movingRect.m_y, m_destination.m_x, m_destination.m_y);
 
-        if (m_movingRect.m_x < m_destination.m_x)
-        {
-            Animate(0, 2, 2, 200);
-            m_movingRect.m_x += m_movingSpeed;
-        }
-        if (m_movingRect.m_x > m_destination.m_x)
-        {
-            Animate(0, 2, 1, 200);
-            m_movingRect.m_x -= m_movingSpeed;
-        }
-        if (m_movingRect.m_y < m_destination.m_y)
-        {
-            Animate(0, 2, 0, 200);
-            m_movingRect.m_y += m_movingSpeed;
-        }
-        if (m_movingRect.m_y > m_destination.m_y)
-        {
-            Animate(0, 2, 3, 200);
-            m_movingRect.m_y -= m_movingSpeed;
-        }
+        m_movingRect.m_x = (int) (m_movingRect.m_x - (((m_movingRect.m_x - m_destination.m_x) / distance) * 3.7f));
+        m_movingRect.m_y = (int) (m_movingRect.m_y - (((m_movingRect.m_y - m_destination.m_y) / distance) * 3.7f));
 
-        m_isMoving = !isEqual<int>(m_movingRect.m_x, m_destination.m_x, m_movingSpeed)
-                || !isEqual<int>(m_movingRect.m_y, m_destination.m_y, m_movingSpeed);
+
+        m_isMoving = !Tools::isEqual<int>(m_movingRect.m_x, m_destination.m_x, m_movingSpeed)
+                || !Tools::isEqual<int>(m_movingRect.m_y, m_destination.m_y, m_movingSpeed);
     }
 
     void AnimSprite::SetMoving(int x, int y)
