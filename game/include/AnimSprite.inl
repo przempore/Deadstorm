@@ -1,3 +1,4 @@
+#include "AnimSprite.hpp"
 
 namespace Deadstorm
 {
@@ -31,10 +32,12 @@ namespace Deadstorm
         return m_texturePart->SourceRectangle();
     }
 
-    inline void AnimSprite::SetPlace(int x, int y)
+    inline void AnimSprite::SetPosition(int x, int y)
     {
-        m_movingRect.m_x = x;
-        m_movingRect.m_y = y;
+        m_currentPosition.m_x = x;
+        m_currentPosition.m_y = y;
+        m_movingRect.m_x = m_currentPosition.m_x - (m_rectangleWidth / 2);
+        m_movingRect.m_y = m_currentPosition.m_y - m_rectangleHeight - 10;
     }
 
     inline void AnimSprite::SetDisplaySize(int w, int h)

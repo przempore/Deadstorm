@@ -1,7 +1,7 @@
 project(Deadstorm)
 cmake_minimum_required(VERSION 2.8.0)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -g")
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(SDL2 REQUIRED)
@@ -16,4 +16,4 @@ include_directories("lib")
 
 add_subdirectory(lib)
 add_subdirectory(game)
-add_subdirectory(test)
+#add_subdirectory(test)

@@ -23,7 +23,7 @@ namespace Deadstorm
         inline const Gem::Rectangle SourceRectangle() const;
         inline Gem::Rectangle& Rectangle();
         inline const Gem::Rectangle& Rectangle() const;
-        inline void SetPlace(int x, int y);
+        inline void SetPosition(int x, int y);
         inline void SetDisplaySize(int w, int h);
         inline bool IsMoving() const;
 
@@ -47,8 +47,9 @@ namespace Deadstorm
 
     private:
         bool m_isMoving = false;
+        Gem::Point m_currentPosition;
         Gem::Point m_destination;
-        static const int m_movingSpeed = 2;
+        static const int m_movingSpeed = 4;
     };
 
     typedef std::shared_ptr<AnimSprite> AnimSpritePtr;

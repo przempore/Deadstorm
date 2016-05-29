@@ -37,7 +37,7 @@ namespace Deadstorm
                                 SourceRectangle().m_width / m_col,
                                 SourceRectangle().m_height / m_row);
         SetFrame(0, 0);
-        SetPlace(0, 0);
+        SetPosition(m_rectangleWidth / 2, m_rectangleHeight + 10);
     }
 
     AnimSprite::AnimSprite(const std::string &path, int row, int col, int dw, int dh, bool cached)
@@ -72,14 +72,17 @@ namespace Deadstorm
 
     void AnimSprite::Move()
     {
-        float distance = Tools::GetDistance(m_movingRect.m_x, m_movingRect.m_y, m_destination.m_x, m_destination.m_y);
+        float distance = Tools::GetDistance(m_currentPosition.m_x, m_currentPosition.m_y, m_destination.m_x, m_destination.m_y);
 
-        m_movingRect.m_x = (int) (m_movingRect.m_x - (((m_movingRect.m_x - m_destination.m_x) / distance) * 3.7f));
-        m_movingRect.m_y = (int) (m_movingRect.m_y - (((m_movingRect.m_y - m_destination.m_y) / distance) * 3.7f));
+        int x = (int) (m_currentPosition.m_x -
+                       (((m_currentPosition.m_x - m_destination.m_x) / distance) * m_movingSpeed));
+        int y = (int) (m_currentPosition.m_y -
+                       (((m_currentPosition.m_y - m_destination.m_y) / distance) * m_movingSpeed));
 
+        SetPosition(x, y);
 
-        m_isMoving = !Tools::isEqual<int>(m_movingRect.m_x, m_destination.m_x, m_movingSpeed)
-                || !Tools::isEqual<int>(m_movingRect.m_y, m_destination.m_y, m_movingSpeed);
+        m_isMoving = !Tools::isEqual<int>(m_currentPosition.m_x, m_destination.m_x, m_movingSpeed)
+                     || !Tools::isEqual<int>(m_currentPosition.m_y, m_destination.m_y, m_movingSpeed);
     }
 
     void AnimSprite::SetMoving(int x, int y)
