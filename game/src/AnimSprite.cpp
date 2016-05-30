@@ -59,36 +59,24 @@ namespace Deadstorm
         if (angle > 45 && angle <= 135)
         {
             //down
-            if (m_distance > 15)
-                Animate(0, 2, 3, 200);
-            else
-                Animate(1, 1, 3, 200);
+            Animate(0, 2, 3, 200);
 
         }
         else if (angle > 135 && angle <= 225)
         {
             //left
-            if (m_distance > 15)
-                Animate(0, 2, 2, 200);
-            else
-                Animate(1, 1, 2, 200);
+            Animate(0, 2, 2, 200);
         }
         else if (angle > 225 && angle <= 315)
         {
             //up
-            if (m_distance > 15)
-                Animate(0, 2, 0, 200);
-            else
-                Animate(1, 1, 0, 200);
+            Animate(0, 2, 0, 200);
 
         }
         else if ((angle <= 360 && angle > 315) || (angle >= 0 && angle <= 45))
         {
             //right
-            if (m_distance > 15)
-                Animate(0, 2, 1, 200);
-            else
-                Animate(1, 1, 1, 200);
+            Animate(0, 2, 1, 200);
         }
     }
 
