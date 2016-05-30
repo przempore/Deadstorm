@@ -44,6 +44,7 @@ namespace Deadstorm
                              m_rex->SourceRectangle(),
                              &m_rex->Rectangle(),
                              Gem::Color::s_black);
+        m_rex->Animate();
     }
 
     void GameplayState::OnEvent(const Gem::Event &event, bool suspended)

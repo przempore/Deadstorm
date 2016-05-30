@@ -28,11 +28,12 @@ namespace Deadstorm
         inline bool IsMoving() const;
 
     public:
-        void Animate(int beginFrame, int endFrame, int row, float deelay);
         void Move();
+        void Animate();
         void SetMoving(int x, int y);
 
     private:
+        void Animate(int beginFrame, int endFrame, int row, float deelay);
         inline void SetDestination(int x, int y);
 
     private:
@@ -50,6 +51,7 @@ namespace Deadstorm
         Gem::Point m_currentPosition;
         Gem::Point m_destination;
         static const int m_movingSpeed = 4;
+        float m_distance = 0.f;
     };
 
     typedef std::shared_ptr<AnimSprite> AnimSpritePtr;
