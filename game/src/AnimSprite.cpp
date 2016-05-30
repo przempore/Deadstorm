@@ -7,8 +7,6 @@
 
 namespace Deadstorm
 {
-    using namespace std;
-
     AnimSprite::AnimSprite(const std::string &path, int row, int col, bool cached)
             : m_row(row),
               m_col(col),
@@ -127,7 +125,6 @@ namespace Deadstorm
 
         SetPosition(x, y);
 
-//        m_isMoving = m_distance >= m_movingSpeed;
         m_isMoving = !Tools::isEqual<int>(m_currentPosition.m_x, m_destination.m_x, m_movingSpeed)
                      || !Tools::isEqual<int>(m_currentPosition.m_y, m_destination.m_y, m_movingSpeed);
     }
