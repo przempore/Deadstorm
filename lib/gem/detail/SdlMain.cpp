@@ -71,6 +71,7 @@ namespace Gem
 
                 if (!(IMG_Init(flags) & flags))
                 {
+					printf(SDL_GetError());
                     return false;
                 }
 

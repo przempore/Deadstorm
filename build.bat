@@ -18,7 +18,28 @@ if "%1" == "-r" (
 		if not exist bin\game\Debug\SDL2_image.dll (
 			copy %SDL2_image%\lib\x86\SDL2_image.dll bin\game\Debug\
 			)
-		bin\game\Debug\Deadstorm.exe
+		if not exist bin\game\Debug\SDL2_ttf.dll (
+			copy %SDL2_ttf%\lib\x86\SDL2_ttf.dll bin\game\Debug\
+			)
+		if not exist bin\game\Debug\libfreetype-6.dll (
+			copy %SDL2_ttf%\lib\x86\libfreetype-6.dll bin\game\Debug\
+			)
+		if not exist bin\game\Debug\zlib1.dll (
+			copy %SDL2_ttf%\lib\x86\zlib1.dll bin\game\Debug\
+			)
+		if not exist bin\game\Debug\libjpeg-9.dll (
+			copy %SDL2_image%\lib\x86\libjpeg-9.dll bin\game\Debug\
+			)
+		if not exist bin\game\Debug\libpng16-16.dll (
+			copy %SDL2_image%\lib\x86\libpng16-16.dll bin\game\Debug\
+			)
+		if not exist bin\game\Debug\assets (
+			mkdir bin\game\Debug\assets
+			xcopy bin\game\assets bin\game\Debug\assets /e /i /s /y /v
+			)
+		cd bin\game\Debug
+		Deadstorm.exe
+		cd ..\..\..
 		goto eof
 		
 		)

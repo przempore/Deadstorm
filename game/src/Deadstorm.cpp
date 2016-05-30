@@ -39,6 +39,6 @@ namespace Gem
 {
     ApplicationPtr CreateApplication()
     {
-        return ApplicationPtr(new Deadstorm::Deadstorm(0));
+        return ApplicationPtr(new Deadstorm::Deadstorm(GameStateId_Creation));
     }
 }
