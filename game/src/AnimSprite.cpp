@@ -55,7 +55,7 @@ namespace Deadstorm
         }
 
         float angle = atan2(m_destination.m_y - m_currentPosition.m_y, m_destination.m_x - m_currentPosition.m_x);
-        angle = (float) ((angle * (180 / 3.14)) + 180);
+        angle = ((angle * (180 / 3.14f)) + 180);
         if (angle > 45 && angle <= 135)
         {
             //down
