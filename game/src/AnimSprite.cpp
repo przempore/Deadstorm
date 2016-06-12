@@ -73,7 +73,7 @@ namespace Deadstorm
             Animate(0, 2, 0, 200);
 
         }
-        else if ((angle <= 360 && angle > 315) || (angle >= 0 && angle <= 45))
+        else if ((angle <= 365 && angle > 315) || (angle >= 0 && angle <= 45))
         {
             //right
             Animate(0, 2, 1, 200);
