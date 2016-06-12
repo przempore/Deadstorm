@@ -1,5 +1,3 @@
-#include "AnimSprite.hpp"
-
 namespace Deadstorm
 {
     inline void AnimSprite::SetPosition(int x, int y)

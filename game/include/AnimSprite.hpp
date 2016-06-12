@@ -1,6 +1,7 @@
 #ifndef DEADSTORM_ANIMSPRITE_HPP
 #define DEADSTORM_ANIMSPRITE_HPP
 
+#include "Sprite.hpp"
 #include <string>
 #include "Sprite.hpp"
 
