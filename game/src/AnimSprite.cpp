@@ -7,8 +7,6 @@
 
 namespace Deadstorm
 {
-    using namespace std;
-
     AnimSprite::AnimSprite(const std::string &path, int row, int col, bool cached)
             : m_row(row),
               m_col(col),
@@ -49,6 +47,39 @@ namespace Deadstorm
     AnimSprite::~AnimSprite()
     { }
 
+    void AnimSprite::Animate()
+    {
+        if (!m_isMoving)
+        {
+            return;
+        }
+
+        float angle = atan2(m_destination.m_y - m_currentPosition.m_y, m_destination.m_x - m_currentPosition.m_x);
+        angle = ((angle * (180 / 3.14f)) + 180);
+        if (angle > 45 && angle <= 135)
+        {
+            //down
+            Animate(0, 2, 3, 200);
+
+        }
+        else if (angle > 135 && angle <= 225)
+        {
+            //left
+            Animate(0, 2, 2, 200);
+        }
+        else if (angle > 225 && angle <= 315)
+        {
+            //up
+            Animate(0, 2, 0, 200);
+
+        }
+        else if ((angle <= 365 && angle > 315) || (angle >= 0 && angle <= 45))
+        {
+            //right
+            Animate(0, 2, 1, 200);
+        }
+    }
+
     void AnimSprite::Animate(int beginFrame, int endFrame, int row, float deelay)
     {
         if ((m_animDeelay + deelay) > SDL_GetTicks())
@@ -72,12 +103,13 @@ namespace Deadstorm
 
     void AnimSprite::Move()
     {
-        float distance = Tools::GetDistance(m_currentPosition.m_x, m_currentPosition.m_y, m_destination.m_x, m_destination.m_y);
+        m_distance = Tools::GetDistance(m_currentPosition.m_x, m_currentPosition.m_y, m_destination.m_x,
+                                        m_destination.m_y);
 
         int x = (int) (m_currentPosition.m_x -
-                       (((m_currentPosition.m_x - m_destination.m_x) / distance) * m_movingSpeed));
+                       (((m_currentPosition.m_x - m_destination.m_x) / m_distance) * m_movingSpeed));
         int y = (int) (m_currentPosition.m_y -
-                       (((m_currentPosition.m_y - m_destination.m_y) / distance) * m_movingSpeed));
+                       (((m_currentPosition.m_y - m_destination.m_y) / m_distance) * m_movingSpeed));
 
         SetPosition(x, y);
 
