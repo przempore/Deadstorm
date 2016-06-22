@@ -28,5 +28,4 @@ namespace Deadstorm
         m_texturePart->SourceRectangle().m_x = x;
         m_texturePart->SourceRectangle().m_y = y;
     }
-
 }

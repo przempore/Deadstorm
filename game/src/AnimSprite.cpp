@@ -12,19 +12,17 @@ namespace Deadstorm
               m_animDeelay(0),
               m_currentFrame(0)
     {
-
-        m_controlRectangle = {SourceRectangle().m_x,
+        m_controlRectangle = {
+                       SourceRectangle().m_x,
                        SourceRectangle().m_y,
                        SourceRectangle().m_width,
-                       SourceRectangle().m_height};
+                       SourceRectangle().m_height
+                   };
 
         m_controlRectangleWidth = SourceRectangle().m_width / m_col;
         m_controlRectangleHeight = SourceRectangle().m_height / m_row;
 
-        SourceRectangle().Reset(0 * m_controlRectangleWidth,
-                                0 * m_controlRectangleHeight,
-                                m_controlRectangleWidth,
-                                m_controlRectangleHeight);
+        SourceRectangle().Reset(0, 0, m_controlRectangleWidth, m_controlRectangleHeight);
 
         SetPosition(m_controlRectangleWidth / 2, m_controlRectangleHeight + 10);
         SetFrame(0, 0);
@@ -52,7 +50,6 @@ namespace Deadstorm
         {
             //down
             Animate(0, 2, 3, 200);
-
         }
         else if (angle > 135 && angle <= 225)
         {
@@ -63,7 +60,6 @@ namespace Deadstorm
         {
             //up
             Animate(0, 2, 0, 200);
-
         }
         else if ((angle <= 365 && angle > 315) || (angle >= 0 && angle <= 45))
         {
@@ -109,7 +105,7 @@ namespace Deadstorm
                      || !Tools::isEqual<int>(m_currentPosition.m_y, m_destination.m_y, m_movingSpeed);
     }
 
-    void AnimSprite::SetMoving(int x, int y)
+    void AnimSprite::MoveTo(int x, int y)
     {
         SetDestination(x, y);
         m_isMoving = true;

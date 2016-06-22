@@ -13,6 +13,7 @@ namespace Deadstorm
         }
         catch (Gem::Error er)
         {
+            std::cerr << "file: " << __FILE__ << ", line: " << __LINE__ << std::endl;
             std::cerr << er.What() << std::endl;
         }
 

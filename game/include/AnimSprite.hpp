@@ -1,8 +1,8 @@
 #ifndef DEADSTORM_ANIMSPRITE_HPP
 #define DEADSTORM_ANIMSPRITE_HPP
 
-#include "Sprite.hpp"
 #include <string>
+#include "Sprite.hpp"
 
 namespace Deadstorm
 {
@@ -25,7 +25,7 @@ namespace Deadstorm
     public:
         void Move();
         void Animate();
-        void SetMoving(int x, int y);
+        void MoveTo(int x, int y);
 
     private:
         void Animate(int beginFrame, int endFrame, int row, float deelay);
