@@ -1,13 +1,12 @@
-#ifndef DEADSTORM_SPRITE_HPP
-#define DEADSTORM_SPRITE_HPP
+#ifndef DEADSTORM_ANIMSPRITE_HPP
+#define DEADSTORM_ANIMSPRITE_HPP
 
 #include <string>
-#include <gem/TexturePart.hpp>
-#include <gem/Point.hpp>
+#include "Sprite.hpp"
 
 namespace Deadstorm
 {
-    class AnimSprite
+    class AnimSprite : public Sprite
     {
     public:
         AnimSprite(const std::string &path, int row, int col, bool cached = false);
@@ -17,30 +16,25 @@ namespace Deadstorm
 
     public:
         inline void SetFrame(int x, int y);
-        inline Gem::TexturePtr Texture();
-        inline Gem::ConstTexturePtr Texture() const;
-        inline Gem::Rectangle& SourceRectangle();
-        inline const Gem::Rectangle SourceRectangle() const;
+        inline bool IsMoving() const;
+        inline void SetPosition(int x, int y) override;
         inline Gem::Rectangle& Rectangle();
         inline const Gem::Rectangle& Rectangle() const;
-        inline void SetPosition(int x, int y);
         inline void SetDisplaySize(int w, int h);
-        inline bool IsMoving() const;
 
     public:
         void Move();
         void Animate();
-        void SetMoving(int x, int y);
+        void MoveTo(int x, int y);
 
     private:
         void Animate(int beginFrame, int endFrame, int row, float deelay);
         inline void SetDestination(int x, int y);
 
     private:
-        Gem::TexturePartPtr m_texturePart;
-        Gem::Rectangle m_movingRect;
-        int m_rectangleWidth;
-        int m_rectangleHeight;
+        Gem::Rectangle m_controlRectangle;
+        int m_controlRectangleWidth;
+        int m_controlRectangleHeight;
         int m_row = 0;
         int m_col = 0;
         float m_animDeelay = 0;
@@ -48,9 +42,8 @@ namespace Deadstorm
 
     private:
         bool m_isMoving = false;
-        Gem::Point m_currentPosition;
         Gem::Point m_destination;
-        static const int m_movingSpeed = 4;
+        static const int m_movingSpeed = 3;
         float m_distance = 0.f;
     };
 
@@ -59,4 +52,4 @@ namespace Deadstorm
 
 #include "AnimSprite.inl"
 
-#endif //DEADSTORM_SPRITE_HPP
+#endif //DEADSTORM_ANIMSPRITE_HPP

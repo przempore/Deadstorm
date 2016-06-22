@@ -26,7 +26,7 @@ namespace Gem
 	};
 
 	typedef std::unique_ptr< Application > ApplicationPtr;
-};
+}
 
 #define g_application Application::Instance()
 

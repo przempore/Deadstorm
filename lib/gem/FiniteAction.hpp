@@ -16,7 +16,7 @@ namespace Gem
 
     class FiniteAction : public Action
     {
-        GEM_SIGNAL(Finished, (void*));
+        GEM_SIGNAL(Finished, (void*))
 
     public:
         FiniteAction(void* data = nullptr) : m_finished(false),
