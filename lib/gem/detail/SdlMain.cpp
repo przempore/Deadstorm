@@ -71,7 +71,7 @@ namespace Gem
 
                 if (!(IMG_Init(flags) & flags))
                 {
-					printf(SDL_GetError());
+                    printf(SDL_GetError());
                     return false;
                 }
 
@@ -192,6 +192,10 @@ int main(int argv, char **argc)
                     SDL_GetMouseState(&input.m_point.m_x, &input.m_point.m_y);
                     input.m_action = Gem::TouchAction::Down;
 
+                    event.button.button == SDL_BUTTON_LEFT
+                        ? input.m_point.m_id = 0
+                        : input.m_point.m_id = 1;
+
                     application->OnInput(Gem::Input(input));
                 }
                     break;
@@ -202,6 +206,10 @@ int main(int argv, char **argc)
 
                     SDL_GetMouseState(&input.m_point.m_x, &input.m_point.m_y);
                     input.m_action = Gem::TouchAction::Up;
+
+                    event.button.button == SDL_BUTTON_LEFT
+                    ? input.m_point.m_id = 0
+                    : input.m_point.m_id = 1;
 
                     application->OnInput(Gem::Input(input));
                 }

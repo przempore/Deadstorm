@@ -6,7 +6,7 @@ namespace Deadstorm
     namespace Tools
     {
         template<class T>
-        inline bool isEqual(T a, T b, T c)
+        inline bool IsEqual(T a, T b, T c)
         {
             T diff = a - b;
             if (diff < 0)

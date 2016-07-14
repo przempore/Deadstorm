@@ -52,13 +52,21 @@ namespace Deadstorm
 
     void GameplayState::OnInput(const Gem::Input &input, bool suspended)
     {
-        if (input.which() == 1)
+        if (input.which() == (int)Gem::InputType::TouchInput)
         {
             const Gem::TouchInput *touchInput = &boost::get<Gem::TouchInput>(input);
             if (touchInput->m_action == Gem::TouchAction::Down)
             {
-                m_rex->MoveTo(touchInput->m_point.m_x, touchInput->m_point.m_y);
-                std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y << std::endl;
+                if (touchInput->m_point.m_id == 0)
+                {
+                    m_rex->MoveTo(touchInput->m_point.m_x, touchInput->m_point.m_y);
+                    std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y << std::endl;
+                }
+                else
+                {
+                    m_rex->SetPosition(touchInput->m_point.m_x, touchInput->m_point.m_y);
+                    std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y << std::endl;
+                }
             }
         }
     }

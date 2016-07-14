@@ -18,6 +18,12 @@ namespace Gem
         Up,
     };
 
+    enum class InputType
+    {
+        KeyboardInput,
+        TouchInput,
+    };
+
     struct TouchPoint
     {
         TouchAction m_action;

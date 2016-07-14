@@ -1,3 +1,5 @@
+#include "AnimSprite.hpp"
+
 namespace Deadstorm
 {
     inline void AnimSprite::SetPosition(int x, int y)
@@ -38,7 +40,43 @@ namespace Deadstorm
 
     inline void AnimSprite::SetDestination(int x, int y)
     {
-        m_destination.m_x = x;
-        m_destination.m_y = y;
+        const int minX{
+                17
+        };
+        const int maxX{
+                960 - minX
+        };
+        const int minY{
+                44
+        };
+        const int maxY{
+                640
+        };
+
+        if (x < minX)
+        {
+            m_destination.m_x = minX;
+        }
+        else if (x > maxX)
+        {
+            m_destination.m_x = maxX;
+        }
+        else
+        {
+            m_destination.m_x = x;
+        }
+
+        if (y < minY)
+        {
+            m_destination.m_y = minY;
+        }
+        else if (y > maxY)
+        {
+            m_destination.m_y = maxY;
+        }
+        else
+        {
+            m_destination.m_y = y;
+        }
     }
 }

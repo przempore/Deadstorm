@@ -13,11 +13,11 @@ namespace Deadstorm
               m_currentFrame(0)
     {
         m_controlRectangle = {
-                       SourceRectangle().m_x,
-                       SourceRectangle().m_y,
-                       SourceRectangle().m_width,
-                       SourceRectangle().m_height
-                   };
+                SourceRectangle().m_x,
+                SourceRectangle().m_y,
+                SourceRectangle().m_width,
+                SourceRectangle().m_height
+        };
 
         m_controlRectangleWidth = SourceRectangle().m_width / m_col;
         m_controlRectangleHeight = SourceRectangle().m_height / m_row;
@@ -101,8 +101,8 @@ namespace Deadstorm
 
         SetPosition(x, y);
 
-        m_isMoving = !Tools::isEqual<int>(m_currentPosition.m_x, m_destination.m_x, m_movingSpeed)
-                     || !Tools::isEqual<int>(m_currentPosition.m_y, m_destination.m_y, m_movingSpeed);
+        m_isMoving = !Tools::IsEqual<int>(m_currentPosition.m_x, m_destination.m_x, m_movingSpeed)
+                     || !Tools::IsEqual<int>(m_currentPosition.m_y, m_destination.m_y, m_movingSpeed);
     }
 
     void AnimSprite::MoveTo(int x, int y)
