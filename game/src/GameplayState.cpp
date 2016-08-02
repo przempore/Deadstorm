@@ -65,6 +65,7 @@ namespace Deadstorm
                                   << std::endl;
                         break;
                     case 1:
+                        m_rex->SetMoving(false);
                         m_rex->SetPosition(touchInput->m_point.m_x, touchInput->m_point.m_y);
                         std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y
                                   << std::endl;

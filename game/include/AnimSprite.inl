@@ -38,8 +38,19 @@ namespace Deadstorm
         return m_isMoving;
     }
 
-    inline void AnimSprite::SetDestination(int x, int y)
+    inline void AnimSprite::SetMoving(const bool isMoving)
     {
+        m_isMoving = isMoving;
+    }
+
+
+    inline bool AnimSprite::SetDestination(int x, int y)
+    {
+        if (m_destination != m_currentPosition)
+        {
+            return false;
+        }
+
         const int minX{
                 17
         };
@@ -78,5 +89,7 @@ namespace Deadstorm
         {
             m_destination.m_y = y;
         }
+
+        return true;
     }
 }

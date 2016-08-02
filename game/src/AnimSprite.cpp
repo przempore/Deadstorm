@@ -35,7 +35,7 @@ namespace Deadstorm
     }
 
     AnimSprite::~AnimSprite()
-    { }
+    {}
 
     void AnimSprite::Animate()
     {
@@ -107,7 +107,6 @@ namespace Deadstorm
 
     void AnimSprite::MoveTo(int x, int y)
     {
-        SetDestination(x, y);
-        m_isMoving = true;
+        m_isMoving = SetDestination(x, y);
     }
 }
