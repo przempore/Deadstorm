@@ -46,7 +46,8 @@ namespace Deadstorm
 
     inline bool AnimSprite::SetDestination(int x, int y)
     {
-        if (m_destination != m_currentPosition)
+        if (m_currentPosition.m_x == x
+            && m_currentPosition.m_y == y)
         {
             return false;
         }

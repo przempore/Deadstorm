@@ -94,10 +94,10 @@ namespace Deadstorm
         m_distance = Tools::GetDistance(m_currentPosition.m_x, m_currentPosition.m_y, m_destination.m_x,
                                         m_destination.m_y);
 
-        int x = (int) (m_currentPosition.m_x -
-                       (((m_currentPosition.m_x - m_destination.m_x) / m_distance) * m_movingSpeed));
-        int y = (int) (m_currentPosition.m_y -
-                       (((m_currentPosition.m_y - m_destination.m_y) / m_distance) * m_movingSpeed));
+        int x = static_cast<int>(m_currentPosition.m_x -
+                                 (((m_currentPosition.m_x - m_destination.m_x) / m_distance) * m_movingSpeed));
+        int y = static_cast<int>(m_currentPosition.m_y -
+                                 (((m_currentPosition.m_y - m_destination.m_y) / m_distance) * m_movingSpeed));
 
         SetPosition(x, y);
 
