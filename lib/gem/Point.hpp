@@ -13,6 +13,10 @@ namespace Gem
         static const Point s_zero;
 
     public:
+        bool operator==(Point &p);
+        bool operator!=(Point &p);
+
+    public:
         int m_x;
         int m_y;
     };
