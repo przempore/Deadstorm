@@ -23,10 +23,10 @@ namespace Deadstorm
     }
 
     void GameplayState::OnSuspend(void *owner, int pushedStateId)
-    { }
+    {}
 
     void GameplayState::OnResume(void *owner, int poppedStateId)
-    { }
+    {}
 
     void GameplayState::OnUpdate(float dt, bool suspended)
     {
@@ -48,24 +48,30 @@ namespace Deadstorm
     }
 
     void GameplayState::OnEvent(const Gem::Event &event, bool suspended)
-    { }
+    {}
 
     void GameplayState::OnInput(const Gem::Input &input, bool suspended)
     {
-        if (input.which() == (int)Gem::InputType::TouchInput)
+        if (input.which() == (int) Gem::InputType::TouchInput)
         {
             const Gem::TouchInput *touchInput = &boost::get<Gem::TouchInput>(input);
             if (touchInput->m_action == Gem::TouchAction::Down)
             {
-                if (touchInput->m_point.m_id == 0)
+                switch (touchInput->m_point.m_id)
                 {
-                    m_rex->MoveTo(touchInput->m_point.m_x, touchInput->m_point.m_y);
-                    std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y << std::endl;
-                }
-                else
-                {
-                    m_rex->SetPosition(touchInput->m_point.m_x, touchInput->m_point.m_y);
-                    std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y << std::endl;
+                    case 0:
+                        m_rex->MoveTo(touchInput->m_point.m_x, touchInput->m_point.m_y);
+                        std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y
+                                  << std::endl;
+                        break;
+                    case 1:
+                        m_rex->SetPosition(touchInput->m_point.m_x, touchInput->m_point.m_y);
+                        std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y
+                                  << std::endl;
+                        break;
+
+                    default:
+                        std::cerr << "Wrong input type!!" << std::endl;
                 }
             }
         }
