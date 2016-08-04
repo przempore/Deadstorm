@@ -12,7 +12,6 @@ namespace Gem
 
     bool Point::operator!=(Point &p)
     {
-        return !(m_x == p.m_x
-               && m_y == p.m_y);
+        return !(*this == p);
     }
 }
