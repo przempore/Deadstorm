@@ -4,7 +4,7 @@
 #include <gem/Texture.hpp>
 #include <gem/TexturePart.hpp>
 #include "gem/GameState.hpp"
-#include "AnimSprite.hpp"
+#include "Actor.hpp"
 
 namespace Deadstorm
 {
@@ -24,7 +24,7 @@ namespace Deadstorm
 
     private:
         Gem::ConstTexturePtr m_grass;
-        AnimSpritePtr m_rex;
+        ActorPtr m_rex;
     };
 
 }

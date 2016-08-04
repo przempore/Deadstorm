@@ -12,7 +12,7 @@ namespace Deadstorm
     {
         puts("PreloaderState::OnEnter");
         g_content.Register("jpg", Gem::Texture::Load);
-        g_gameStateManager.ChangeState(GameStateId_Menu);
+        g_gameStateManager.ChangeState(g_gameStateId_Menu);
     }
 
     void PreloaderState::OnExit(void *owner, int nextStateId)
@@ -42,7 +42,7 @@ namespace Deadstorm
         if (input.which() == 0)
         {
             std::cout << input.which() << std::endl;
-            g_gameStateManager.ChangeState(GameStateId_Menu);
+            g_gameStateManager.ChangeState(g_gameStateId_Menu);
         }
     }
 }

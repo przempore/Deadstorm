@@ -9,6 +9,7 @@ namespace Deadstorm
     class Sprite
     {
     public:
+        Sprite() = delete;
         Sprite(const std::string &path, bool cached = false);
         virtual ~Sprite();
 

@@ -24,8 +24,5 @@ namespace Deadstorm
     {
         m_currentPosition.m_x = x;
         m_currentPosition.m_y = y;
-
-        m_texturePart->SourceRectangle().m_x = x;
-        m_texturePart->SourceRectangle().m_y = y;
     }
 }
