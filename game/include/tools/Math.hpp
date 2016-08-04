@@ -1,6 +1,8 @@
 #ifndef DEADSTORM_MATH_HPP
 #define DEADSTORM_MATH_HPP
 
+#include <cmath>
+
 namespace Deadstorm
 {
     namespace Tools
@@ -22,7 +24,7 @@ namespace Deadstorm
             _T diffX = fromX - toX;
             _T diffY = fromY - toY;
 
-            return sqrt((diffX * diffX) + (diffY * diffY));
+            return std::sqrt((diffX * diffX) + (diffY * diffY));
         }
     }
 }

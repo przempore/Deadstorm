@@ -22,11 +22,11 @@ namespace Deadstorm
         Gem::GameStatePtr menuState(new MenuState());
         Gem::GameStatePtr gamePlayState(new GameplayState());
 
-        g_gameStateManager.Register(GameStateId_Preloader, preloaderState);
-        g_gameStateManager.Register(GameStateId_Menu, menuState);
-        g_gameStateManager.Register(GameStateId_GamePlay, gamePlayState);
+        g_gameStateManager.Register(g_gameStateId_Preloader, preloaderState);
+        g_gameStateManager.Register(g_gameStateId_Menu, menuState);
+        g_gameStateManager.Register(g_gameStateId_GamePlay, gamePlayState);
 
-        g_gameStateManager.PushState(GameStateId_Preloader);
+        g_gameStateManager.PushState(g_gameStateId_Preloader);
     }
 
     void Deadstorm::OnShutdown()
@@ -39,6 +39,6 @@ namespace Gem
 {
     ApplicationPtr CreateApplication()
     {
-        return ApplicationPtr(new Deadstorm::Deadstorm(GameStateId_Creation));
+        return ApplicationPtr(new Deadstorm::Deadstorm(Deadstorm::g_gameStateId_Creation));
     }
 }

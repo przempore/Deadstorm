@@ -2,14 +2,17 @@
 #include "Sprite.hpp"
 #include <gem/Content.hpp>
 #include <gem/Error.hpp>
+#include <gem/Texture.hpp>
 
 namespace Deadstorm
 {
     Sprite::Sprite(const std::string &path, bool cached)
     {
+        Gem::TexturePtr tex;
         try
         {
             m_texturePart = g_content.Acquire<Gem::TexturePart>(path, cached);
+            tex = m_texturePart->Texture();
         }
         catch (Gem::Error er)
         {
@@ -17,6 +20,8 @@ namespace Deadstorm
             std::cerr << er.What() << std::endl;
         }
 
+        int w = tex->Width();
+        std::cerr << "w: " << w << std::endl;
         SetPosition(0, 0);
     }
 

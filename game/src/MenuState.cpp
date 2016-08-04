@@ -12,7 +12,7 @@ namespace Deadstorm
     {
         puts("MenuState::OnEnter");
         m_bg = g_content.Acquire<Gem::Texture>("assets/image/menu_bg.png");
-        g_gameStateManager.ChangeState(GameStateId_GamePlay);   // test
+        g_gameStateManager.ChangeState(g_gameStateId_GamePlay);   // test
     }
 
     void MenuState::OnExit(void *owner, int nextStateId)
@@ -39,16 +39,14 @@ namespace Deadstorm
 
     void MenuState::OnInput(const Gem::Input &input, bool suspended)
     {
-//        std::cout << input.which() << std::endl;
         if (input.which() == 1)
         {
             const Gem::TouchInput *touchInput = &boost::get<Gem::TouchInput>(input);
-//            std::cout << "point: " << touchInput->m_point.m_x << ", " << touchInput->m_point.m_y << std::endl;
             if (touchInput->m_action == Gem::TouchAction::Down
                 && touchInput->m_point.m_x > 400
                 && touchInput->m_point.m_y > 400)
             {
-                g_gameStateManager.ChangeState(GameStateId_GamePlay);
+                g_gameStateManager.ChangeState(g_gameStateId_GamePlay);
             }
         }
     }
