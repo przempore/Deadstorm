@@ -11,16 +11,23 @@ namespace Deadstorm
     public:
         Sprite() = delete;
         Sprite(const std::string &path, bool cached = false);
+        Sprite(const std::string &path, int dw, int dh, bool cached = false);
         virtual ~Sprite();
 
     public:
-        inline Gem::TexturePtr Texture();
-        inline Gem::ConstTexturePtr Texture() const;
-        inline Gem::Rectangle& SourceRectangle();
-        inline const Gem::Rectangle SourceRectangle() const;
+        virtual inline Gem::TexturePtr Texture();
+        virtual inline Gem::ConstTexturePtr Texture() const;
+        virtual inline Gem::Rectangle& SourceRectangle();
+        virtual inline const Gem::Rectangle& Rectangle() const;
+        virtual inline const Gem::Rectangle SourceRectangle() const;
         virtual inline void SetPosition(int x, int y);
+        virtual inline void SetDisplaySize(int w, int h);
 
     protected:
+        virtual inline void SetPoint(Gem::Point *point, int x, int y);
+
+    protected:
+        Gem::Rectangle m_controlRectangle;
         Gem::TexturePartPtr m_texturePart;
         Gem::Point m_currentPosition;
     };

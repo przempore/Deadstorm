@@ -22,7 +22,7 @@ namespace Deadstorm
 
     public:
         float GetMovingAngle();
-        void Move();
+        virtual void Move();
         void MoveTo(int x, int y);
 
     private:
