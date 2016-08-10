@@ -16,9 +16,6 @@ namespace Deadstorm
     public:
         inline void SetFrame(int x, int y);
         inline void SetPosition(int x, int y) override;
-        inline Gem::Rectangle& Rectangle();
-        inline const Gem::Rectangle& Rectangle() const;
-        inline void SetDisplaySize(int w, int h);
 
     public:
         void Animate(float angle);
@@ -27,7 +24,6 @@ namespace Deadstorm
         void Animate(int beginFrame, int endFrame, int row, float deelay);
 
     private:
-        Gem::Rectangle m_controlRectangle;
         int m_frameWidth;
         int m_frameHeight;
         int m_row = 0;

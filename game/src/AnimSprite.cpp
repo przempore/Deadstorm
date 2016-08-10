@@ -11,12 +11,6 @@ namespace Deadstorm
               m_animDeelay(0),
               m_currentFrame(0)
     {
-        m_controlRectangle = {
-                SourceRectangle().m_x,
-                SourceRectangle().m_y,
-                SourceRectangle().m_width,
-                SourceRectangle().m_height
-        };
 
         m_frameWidth = SourceRectangle().m_width / m_col;
         m_frameHeight = SourceRectangle().m_height / m_row;
