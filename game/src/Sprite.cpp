@@ -22,18 +22,23 @@ namespace Deadstorm
 
         int w = tex->Width();
         std::cerr << "w: " << w << std::endl;
-        SetPosition(0, 0);
-    }
 
-    Sprite::Sprite(const std::string &path, int dw, int dh, bool cached)
-            : Sprite(path, cached)
-    {
+        SetPosition(0, 0);
+
         m_controlRectangle = {
                 SourceRectangle().m_x,
                 SourceRectangle().m_y,
                 SourceRectangle().m_width,
                 SourceRectangle().m_height
         };
+        
+        SetDisplaySize(SourceRectangle().m_width, SourceRectangle().m_height);
+    }
+
+    Sprite::Sprite(const std::string &path, int dw, int dh, bool cached)
+            : Sprite(path, cached)
+    {
+        SetDisplaySize(dw, dh);
     }
 
     Sprite::~Sprite()

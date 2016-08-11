@@ -14,8 +14,8 @@ namespace Deadstorm
         virtual ~AnimSprite();
 
     public:
-        inline void SetFrame(int x, int y);
-        inline void SetPosition(int x, int y) override;
+        virtual inline void SetFrame(int x, int y);
+        virtual inline void SetPosition(int x, int y) override;
 
     public:
         void Animate(float angle);

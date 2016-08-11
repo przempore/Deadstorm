@@ -18,8 +18,9 @@ namespace Deadstorm
         virtual inline Gem::TexturePtr Texture();
         virtual inline Gem::ConstTexturePtr Texture() const;
         virtual inline Gem::Rectangle& SourceRectangle();
-        virtual inline const Gem::Rectangle& Rectangle() const;
         virtual inline const Gem::Rectangle SourceRectangle() const;
+        virtual inline Gem::Rectangle& Rectangle();
+        virtual inline const Gem::Rectangle& Rectangle() const;
         virtual inline void SetPosition(int x, int y);
         virtual inline void SetDisplaySize(int w, int h);
 

@@ -5,27 +5,23 @@
 namespace Deadstorm
 {
     AnimSprite::AnimSprite(const std::string &path, int row, int col, bool cached)
+            : AnimSprite(path, row, col, SourceRectangle().m_width / m_col,
+                    SourceRectangle().m_height / m_row, cached)
+    {}
+
+    AnimSprite::AnimSprite(const std::string &path, int row, int col, int dw, int dh, bool cached)
             : Sprite(path, cached),
               m_row(row),
               m_col(col),
               m_animDeelay(0),
               m_currentFrame(0)
     {
-
-        m_frameWidth = SourceRectangle().m_width / m_col;
-        m_frameHeight = SourceRectangle().m_height / m_row;
-
-        SourceRectangle().Reset(0, 0, m_frameWidth, m_frameHeight);
-
-        SetDisplaySize(m_frameWidth, m_frameHeight);
-
+        SourceRectangle().m_width = SourceRectangle().m_width / m_col;
+        SourceRectangle().m_height = SourceRectangle().m_height / m_row;
+        // SourceRectangle().Reset(0, 0, m_frameWidth, m_frameHeight);
+        SetDisplaySize(SourceRectangle().m_width, SourceRectangle().m_height);
         SetPosition(m_frameWidth / 2, m_frameHeight + 10);
         SetFrame(0, 0);
-    }
-
-    AnimSprite::AnimSprite(const std::string &path, int row, int col, int dw, int dh, bool cached)
-            : AnimSprite(path, row, col, cached)
-    {
         SetDisplaySize(dw, dh);
     }
 
