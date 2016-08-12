@@ -18,7 +18,7 @@ namespace Deadstorm
         SourceRectangle().Reset(0, 0, SourceRectangle().m_width / m_col, SourceRectangle().m_height / m_row);
 
         SetDisplaySize(dw, dw);
-        SetPosition(dw / 2, dw);
+        SetPosition(0, 0);
         SetFrame(0, 0);
     }
 
