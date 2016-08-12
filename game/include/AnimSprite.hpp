@@ -24,8 +24,6 @@ namespace Deadstorm
         void Animate(int beginFrame, int endFrame, int row, float deelay);
 
     private:
-        int m_frameWidth;
-        int m_frameHeight;
         int m_row = 0;
         int m_col = 0;
         float m_animDeelay = 0;

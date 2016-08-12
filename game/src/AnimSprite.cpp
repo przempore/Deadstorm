@@ -16,11 +16,9 @@ namespace Deadstorm
               m_animDeelay(0),
               m_currentFrame(0)
     {
-        SourceRectangle().m_width = SourceRectangle().m_width / m_col;
-        SourceRectangle().m_height = SourceRectangle().m_height / m_row;
-        // SourceRectangle().Reset(0, 0, m_frameWidth, m_frameHeight);
-        SetDisplaySize(SourceRectangle().m_width, SourceRectangle().m_height);
-        SetPosition(m_frameWidth / 2, m_frameHeight + 10);
+        SourceRectangle().Reset(0, 0, SourceRectangle().m_width / m_col, SourceRectangle().m_height / m_row);
+        SetDisplaySize(dw, dw);
+        SetPosition(dw / 2, dw + 10);
         SetFrame(0, 0);
         SetDisplaySize(dw, dh);
     }
