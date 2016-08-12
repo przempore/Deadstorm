@@ -48,10 +48,10 @@ namespace Deadstorm
     inline void Sprite::SetPoint(Gem::Point *point, int x, int y)
     {
         const int minX{
-                17
+                m_controlRectangle.m_width / 2
         };
         const int minY{
-                44
+                m_controlRectangle.m_height + 10
         };
 
         if (x < minX)
