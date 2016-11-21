@@ -19,6 +19,8 @@ namespace Deadstorm
     public:
         inline bool IsMoving() const;
         inline void SetMoving(const bool isMoving);
+        inline uint32_t LinearTween(uint32_t currentTime, uint32_t startValue,
+                                    uint32_t changeInValue, uint32_t duration);
 
     public:
         float GetMovingAngle();
@@ -32,7 +34,9 @@ namespace Deadstorm
         bool m_isMoving = false;
         Gem::Point m_destination;
         static const int m_movingSpeed = 3;
-        float m_distance = 0.f;
+        Gem::Point m_startPoint;
+        uint32_t m_startTime;
+        uint32_t m_endTime;
     };
 
     typedef std::shared_ptr<MovingSprite> MovingSpritePtr;

@@ -22,6 +22,7 @@ namespace Deadstorm
         virtual inline Gem::Rectangle& Rectangle();
         virtual inline const Gem::Rectangle& Rectangle() const;
         virtual inline void SetPosition(int x, int y);
+        virtual inline Gem::Point GetPosition();
         virtual inline void SetDisplaySize(int w, int h);
 
     protected:
