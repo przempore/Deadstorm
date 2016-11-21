@@ -28,6 +28,10 @@ namespace Deadstorm
 //        m_currentPosition.m_x = x;
 //        m_currentPosition.m_y = y;
     }
+    inline Gem::Point Sprite::GetPosition()
+    {
+        return m_currentPosition;
+    }
 
     inline Gem::Rectangle &Sprite::Rectangle()
     {
