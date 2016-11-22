@@ -19,8 +19,6 @@ namespace Gem
     {
         xml_document doc;
 
-        printf("file: %s, path: %s\n", __FILE__, path.c_str());
-
         xml_parse_result result{doc.load_file(path.c_str())};
 
         if (!result)

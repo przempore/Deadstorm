@@ -20,8 +20,6 @@ namespace Gem
     {
         auto found = m_assets.find(path);
 
-        printf("file: %s, path: %s\n", __FILE__, path.c_str());
-
         if (found != m_assets.end())
         {
             if (found->second.second)

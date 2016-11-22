@@ -43,8 +43,6 @@ namespace Gem
 //            SDL_DestroyTexture(texture);
 //        };
 
-        printf("\tfile: %s, path: %s\n", __FILE__, path);
-
         struct SDL_TextureDeleter
         {
             void operator()(SDL_Texture *texture) const

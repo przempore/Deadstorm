@@ -10,7 +10,6 @@ namespace Deadstorm
 {
     void GameplayState::OnEnter(void *owner, int previousStateId)
     {
-        puts("GamePlayState::OnEnter");
         m_grass = g_content.Acquire<Gem::Texture>("assets/image/grass.jpg", true);
         g_content.Register("xml", Gem::TexturePart::Load);
 
@@ -19,7 +18,6 @@ namespace Deadstorm
 
     void GameplayState::OnExit(void *owner, int nextStateId)
     {
-        puts("GamePlayState::OnExit");
     }
 
     void GameplayState::OnSuspend(void *owner, int pushedStateId)
@@ -64,15 +62,11 @@ namespace Deadstorm
                 switch (touchInput->m_point.m_id)
                 {
                     case 0:
-                        m_rex->MoveTo(touchInput->m_point.m_x, touchInput->m_point.m_y);
-                        std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y
-                                  << std::endl;
+                        m_rex->StartMovingTo(touchInput->m_point.m_x, touchInput->m_point.m_y);
                         break;
                     case 1:
                         m_rex->SetMoving(false);
                         m_rex->SetPosition(touchInput->m_point.m_x, touchInput->m_point.m_y);
-                        std::cerr << "x: " << touchInput->m_point.m_x << ", y: " << touchInput->m_point.m_y
-                                  << std::endl;
                         break;
 
                     default:

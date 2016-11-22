@@ -20,9 +20,6 @@ namespace Deadstorm
             std::cerr << er.What() << std::endl;
         }
 
-        int w = tex->Width();
-        std::cerr << "w: " << w << std::endl;
-
         SetPosition(0, 0);
 
         m_controlRectangle = {
