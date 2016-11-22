@@ -10,14 +10,12 @@ namespace Deadstorm
 {
     void PreloaderState::OnEnter(void *owner, int previousStateId)
     {
-        puts("PreloaderState::OnEnter");
         g_content.Register("jpg", Gem::Texture::Load);
         g_gameStateManager.ChangeState(g_gameStateId_Menu);
     }
 
     void PreloaderState::OnExit(void *owner, int nextStateId)
     {
-        puts("PreloaderState::OnExit");
     }
 
     void PreloaderState::OnSuspend(void *owner, int pushedStateId)

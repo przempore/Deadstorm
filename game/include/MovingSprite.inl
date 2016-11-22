@@ -27,8 +27,8 @@ namespace Deadstorm
         return true;
     }
 
-    inline uint32_t MovingSprite::LinearTween(uint32_t currentTime, uint32_t startValue,
-                                              uint32_t changeInValue, uint32_t duration)
+    inline float MovingSprite::LinearTween(float currentTime, float startValue,
+                                         float changeInValue, float duration)
     {
         return changeInValue * currentTime / duration + startValue;
     }

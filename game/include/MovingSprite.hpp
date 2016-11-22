@@ -11,7 +11,6 @@ namespace Deadstorm
         MovingSprite(const std::string &path, bool cached = false);
         MovingSprite(const std::string &path, int posX, int posY, bool cached = false);
         MovingSprite(const std::string &path, Gem::Point pos, bool cached = false);
-
         MovingSprite();
 
         virtual ~MovingSprite();
@@ -19,13 +18,13 @@ namespace Deadstorm
     public:
         inline bool IsMoving() const;
         inline void SetMoving(const bool isMoving);
-        inline uint32_t LinearTween(uint32_t currentTime, uint32_t startValue,
-                                    uint32_t changeInValue, uint32_t duration);
+        inline float LinearTween(float currentTime, float startValue,
+                                 float changeInValue, float duration);
 
     public:
         float GetMovingAngle();
         virtual void Move();
-        void MoveTo(int x, int y);
+        void StartMovingTo(int x, int y);
 
     private:
         inline bool SetDestination(int x, int y);
@@ -33,10 +32,10 @@ namespace Deadstorm
     private:
         bool m_isMoving = false;
         Gem::Point m_destination;
-        static const int m_movingSpeed = 3;
         Gem::Point m_startPoint;
         uint32_t m_startTime;
         uint32_t m_endTime;
+        uint32_t m_duration = 2500;
     };
 
     typedef std::shared_ptr<MovingSprite> MovingSpritePtr;
