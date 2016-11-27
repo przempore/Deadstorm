@@ -38,7 +38,6 @@ namespace Deadstorm
 
         SetPosition(x, y);
 
-        m_isMoving = SDL_GetTicks() < m_endTime;
         m_isMoving = !Tools::IsEqual<int>(m_currentPosition.m_x, m_destination.m_x, 2)
                      || !Tools::IsEqual<int>(m_currentPosition.m_y, m_destination.m_y, 2);
     }
