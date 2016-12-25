@@ -13,12 +13,11 @@ namespace Deadstorm
         m_grass = g_content.Acquire<Gem::Texture>("assets/image/grass.jpg", true);
         g_content.Register("xml", Gem::TexturePart::Load);
 
-        m_rex.reset(new Actor("assets/textures.xml", 4, 3, 32, 40, 0, 0, true));
+        m_rex.reset(new Actor("assets/textures.xml", 4, 3, 32, 40, 0, 0, 0, 0, true));
     }
 
     void GameplayState::OnExit(void *owner, int nextStateId)
-    {
-    }
+    {}
 
     void GameplayState::OnSuspend(void *owner, int pushedStateId)
     {}
@@ -54,7 +53,7 @@ namespace Deadstorm
 
     void GameplayState::OnInput(const Gem::Input &input, bool suspended)
     {
-        if (input.which() == (int) Gem::InputType::TouchInput)
+        if (input.which() == static_cast<int>(Gem::InputType::TouchInput))
         {
             const Gem::TouchInput *touchInput = &boost::get<Gem::TouchInput>(input);
             if (touchInput->m_action == Gem::TouchAction::Down)

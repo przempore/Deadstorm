@@ -121,10 +121,16 @@ namespace Gem
         crop.x = sourceRectangle->m_x;
         crop.y = sourceRectangle->m_y;
 
+        SDL_Rect cam;
+        cam.h = 640;
+        cam.w = 960;
+        cam.x = crop.x;
+        cam.y = crop.y;
+
         if (SDL_RenderCopy(g_sdlRenderer,
                            sdlTexture.Texture(),
                            &rect,
-                           &crop))
+                           &cam))
         {
             throw Error{
                     SDL_GetError()
