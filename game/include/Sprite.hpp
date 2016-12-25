@@ -24,6 +24,8 @@ namespace Deadstorm
         virtual inline void SetPosition(int x, int y);
         virtual inline Gem::Point GetPosition();
         virtual inline void SetDisplaySize(int w, int h);
+        virtual inline void SetCamPos(int x, int y);
+        virtual inline Gem::Point GetCamPos();
 
     protected:
         virtual inline void SetPoint(Gem::Point *point, int x, int y);
@@ -32,6 +34,7 @@ namespace Deadstorm
         Gem::Rectangle m_controlRectangle;
         Gem::TexturePartPtr m_texturePart;
         Gem::Point m_currentPosition;
+        Gem::Point m_cameraPosition;
     };
 
     typedef std::shared_ptr<Sprite> SpritePtr;

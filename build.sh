@@ -11,6 +11,14 @@ function buildAndMake {
   cd "$BASEDIR"
 }
 
+function buildTest {
+    mkdir -p bin/test
+    cd bin/test
+    cmake ../../test/
+    make
+    cd -
+}
+
 function remove {
   rm -rf bin/
 }
@@ -34,9 +42,11 @@ elif [ "$1" == "-d" ]; then
 elif [ "$1" == "-rb" ]; then
   remove
   buildAndMake
-elif [ "$1" == "-ban" ]; then
+elif [ "$1" == "-bar" ]; then
   buildAndMake
   run
+elif [ "$1" == "-bt" ]; then
+ buildTest
 elif [ "$1" == "-t" ]; then
   buildAndMake
   cd bin/test

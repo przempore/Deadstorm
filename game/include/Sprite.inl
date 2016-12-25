@@ -33,6 +33,16 @@ namespace Deadstorm
         return m_currentPosition;
     }
 
+    inline void Sprite::SetCamPos(int x, int y)
+    {
+        m_cameraPosition.m_x = x;
+        m_cameraPosition.m_y = y;
+    }
+    inline Gem::Point Sprite::GetCamPos()
+    {
+        return m_cameraPosition;
+    }
+    
     inline Gem::Rectangle &Sprite::Rectangle()
     {
         return m_controlRectangle;

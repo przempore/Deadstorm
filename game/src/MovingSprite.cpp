@@ -1,4 +1,3 @@
-#include <tools/Math.hpp>
 #include <iostream>
 #include <SDL_timer.h>
 #include "MovingSprite.hpp"
@@ -12,10 +11,20 @@ namespace Deadstorm
             : MovingSprite(path, Gem::Point(posX, posY), cached)
     {}
 
+    MovingSprite::MovingSprite(const std::string &path, int posX, int posY, int camX, int camY, bool cached)
+            : MovingSprite(path, Gem::Point(posX, posY), Gem::Point(camX, camY), cached)
+    {}
+
     MovingSprite::MovingSprite(const std::string &path, Gem::Point pos, bool cached)
             : MovingSprite(path, cached)
     {
         m_currentPosition = pos;
+    }
+
+    MovingSprite::MovingSprite(const std::string &path, Gem::Point pos, Gem::Point camPos, bool cached)
+            : MovingSprite(path, pos, cached)
+    {
+        m_cameraPosition = camPos;
     }
 
     MovingSprite::~MovingSprite()
@@ -33,13 +42,11 @@ namespace Deadstorm
         float factor_x = LinearTween(time, 0, 1, m_duration);
         float factor_y = LinearTween(time, 0, 1, m_duration);
 
-        int x = static_cast<int>(m_currentPosition.m_x + (m_destination.m_x - m_currentPosition.m_x) * factor_x);
-        int y = static_cast<int>(m_currentPosition.m_y + (m_destination.m_y - m_currentPosition.m_y) * factor_y);
+        int x = getPositionWithFactor(m_currentPosition.m_x, m_destination.m_x, factor_x);
+        int y = getPositionWithFactor(m_currentPosition.m_y, m_destination.m_y, factor_y);
+        SetPosition(x ,y);
 
-        SetPosition(x, y);
-
-        m_isMoving = !Tools::IsEqual<int>(m_currentPosition.m_x, m_destination.m_x, 2)
-                     || !Tools::IsEqual<int>(m_currentPosition.m_y, m_destination.m_y, 2);
+        m_isMoving = isMovingEnd();
     }
 
     void MovingSprite::StartMovingTo(int x, int y)
@@ -47,6 +54,6 @@ namespace Deadstorm
         m_isMoving = SetDestination(x, y);
         m_startPoint = m_currentPosition;
         m_startTime = SDL_GetTicks();
-        m_endTime = m_startTime + m_duration;
+    	std::cerr << "camPos: " << m_cameraPosition.m_x << "," << m_cameraPosition.m_y << std::endl;
     }
 }

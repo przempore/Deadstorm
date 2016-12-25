@@ -10,7 +10,9 @@ namespace Deadstorm
     public:
         MovingSprite(const std::string &path, bool cached = false);
         MovingSprite(const std::string &path, int posX, int posY, bool cached = false);
+        MovingSprite(const std::string &path, int posX, int posY, int camX, int camY, bool cached = false);
         MovingSprite(const std::string &path, Gem::Point pos, bool cached = false);
+        MovingSprite(const std::string &path, Gem::Point pos, Gem::Point camPos, bool cached = false);
         MovingSprite();
 
         virtual ~MovingSprite();
@@ -28,14 +30,17 @@ namespace Deadstorm
 
     private:
         inline bool SetDestination(int x, int y);
+        inline int getPositionWithFactor(int currentPos, int destination, float factor_y) const;
+        inline bool isMovingEnd() const;
+        inline bool positionIsEqual(const int x, const int y) const;
 
     private:
         bool m_isMoving = false;
         Gem::Point m_destination;
         Gem::Point m_startPoint;
         uint32_t m_startTime;
-        uint32_t m_endTime;
         uint32_t m_duration = 2500;
+        static const int m_epsilon = 2;
     };
 
     typedef std::shared_ptr<MovingSprite> MovingSpritePtr;

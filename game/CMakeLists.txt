@@ -3,13 +3,13 @@ file(GLOB game_SRC src/*.cpp
         include/*.inl
         include/tools/*.hpp)
 
+set(CMAKE_CXX_STANDARD 14)
 set(REPO ../)
 
 include_directories("include")
 include_directories("assets")
-# include_directories("../lib")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -ggdb -pedantic -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -pedantic -Wall")
 set(CMAKE_MODULE_PATH "../cmake")
 
 find_package(SDL2 REQUIRED)
@@ -20,7 +20,7 @@ include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INC
 
 file(COPY ${Deadstorm_SOURCE_DIR}/game/assets DESTINATION ${Deadstorm_BINARY_DIR}/game)
 
-add_library(Deadstorm_obj OBJECT ${game_SRC})
-add_executable(Deadstorm $<TARGET_OBJECTS:Deadstorm_obj> src/main/main.cpp)
+add_library(Deadstorm_obj ${game_SRC})
+add_executable(Deadstorm src/main/main.cpp)
 
-target_link_libraries(Deadstorm gem)
+target_link_libraries(Deadstorm gem Deadstorm_obj)
