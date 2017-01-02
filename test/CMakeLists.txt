@@ -36,6 +36,7 @@ file(GLOB test_SRC
         src/gem/*.cpp
         src/game/*.cpp)
 
+# add_library(Deadstorm_obj OBJECT ${game_SRC})
 add_executable(runUnitTests ${test_SRC} $<TARGET_OBJECTS:Deadstorm_obj>)
 
 target_link_libraries(runUnitTests gtest gmock_main gem)
