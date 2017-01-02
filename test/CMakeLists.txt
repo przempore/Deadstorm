@@ -37,8 +37,12 @@ file(GLOB test_SRC
         src/game/*.cpp)
 
 # add_library(Deadstorm_obj OBJECT ${game_SRC})
+<<<<<<< HEAD
 include_directories(/home/przemo/Repositories/Deadstorm)
 add_executable(runUnitTests ${test_SRC})
+=======
+add_executable(runUnitTests ${test_SRC} $<TARGET_OBJECTS:Deadstorm_obj>)
+>>>>>>> cmakes project reorganized
 
 target_link_libraries(runUnitTests gtest gmock_main gem Deadstorm_obj)
 # add_test(NAME runUnitTests_test COMMAND runUnitTests)
