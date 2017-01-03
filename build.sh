@@ -1,11 +1,14 @@
 #!/bin/bash
 
+BASEDIR=$(pwd)
+
 function buildAndMake {
   mkdir -p bin/
   cd bin
   cmake ..
+  cd game
   make
-  cd ..
+  cd "$BASEDIR"
 }
 
 function remove {
@@ -16,7 +19,7 @@ function run {
   if [ -e bin/game/Deadstorm ]; then
     cd bin/game/
     ./Deadstorm
-    cd -
+    cd "$BASEDIR"
   else
     echo "Can't run without build before."
   fi
@@ -35,11 +38,11 @@ elif [ "$1" == "-ban" ]; then
   buildAndMake
   run
 elif [ "$1" == "-t" ]; then
-  if [ -e bin/test/runUnitTests ]; then
-    bin/test/runUnitTests
-  else
-    echo "Can't run tests without build before."
-  fi
+  buildAndMake
+  cd bin/test
+  make
+  ./runUnitTests
+  cd "$BASEDIR"
 else
   echo "  -b build
   -r run
