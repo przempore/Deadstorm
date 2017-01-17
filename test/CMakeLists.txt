@@ -41,4 +41,3 @@ include_directories(/home/przemo/Repositories/Deadstorm)
 add_executable(runUnitTests ${test_SRC})
 
 target_link_libraries(runUnitTests gtest gmock_main gem Deadstorm_obj)
-# add_test(NAME runUnitTests_test COMMAND runUnitTests)

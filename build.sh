@@ -19,6 +19,14 @@ function buildTest {
     cd -
 }
 
+function buildTest {
+    mkdir -p bin/test
+    cd bin/test
+    cmake ../../test/
+    make
+    cd -
+}
+
 function remove {
   rm -rf bin/
 }
