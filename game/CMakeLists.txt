@@ -3,10 +3,7 @@ file(GLOB game_SRC src/*.cpp
         include/*.inl
         include/tools/*.hpp)
 
-<<<<<<< HEAD
 set(CMAKE_CXX_STANDARD 14)
-=======
->>>>>>> cmakes project reorganized
 set(REPO ../)
 
 include_directories("include")
