@@ -24,6 +24,9 @@ namespace Gem
         virtual void DrawTexture(const Texture& texture,
                                  BlendMode blendMode=BlendMode::AlphaBlend) = 0;
         virtual void DrawTexture(const Texture& texture,
+                                 const Rectangle &destinationRectangle,
+                                 BlendMode blendMode=BlendMode::AlphaBlend) = 0;
+        virtual void DrawTexture(const Texture& texture,
                                  const Rectangle& destinationRectangle,
                                  const Color& color,
                                  BlendMode blendMode=BlendMode::AlphaBlend) = 0;

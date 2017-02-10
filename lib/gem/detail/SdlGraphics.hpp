@@ -9,7 +9,10 @@ namespace Gem
     {
     public:
 	    virtual void Clear(const Color &color);
+		virtual void DrawTexture(const Texture &texture,
+								 BlendMode blendMode = BlendMode::AlphaBlend);
 	    virtual void DrawTexture(const Texture &texture,
+								 const Rectangle &destinationRectangle,
 	                             BlendMode blendMode = BlendMode::AlphaBlend);
 	    virtual void DrawTexture(const Texture &texture,
 	                             const Rectangle &destinationRectangle,

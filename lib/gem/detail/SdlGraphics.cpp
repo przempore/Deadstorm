@@ -79,6 +79,41 @@ namespace Gem
 
     void SdlGraphics::DrawTexture(const Texture &texture,
                                   const Rectangle &destinationRectangle,
+                                  BlendMode blendMode)
+    {
+        GEM_ASSERT(g_sdlRenderer);
+
+        if (SDL_SetRenderDrawBlendMode(g_sdlRenderer,
+                                       BlendModeToSdlBlendMode(blendMode)) < 0)
+        {
+            throw Error{
+                    SDL_GetError()
+            };
+        }
+
+        const SdlTexture &sdlTexture{
+                dynamic_cast< const SdlTexture & >( texture )
+        };
+
+        SDL_Rect rect;
+        rect.h = destinationRectangle.m_height;
+        rect.w = destinationRectangle.m_width;
+        rect.x = destinationRectangle.m_x;
+        rect.y = destinationRectangle.m_y;
+
+        if (SDL_RenderCopy(g_sdlRenderer,
+                           sdlTexture.Texture(),
+                           nullptr,
+                           &rect))
+        {
+            throw Error{
+                    SDL_GetError()
+            };
+        }
+    }
+
+    void SdlGraphics::DrawTexture(const Texture &texture,
+                                  const Rectangle &destinationRectangle,
                                   const Color &color,
                                   BlendMode blendMode)
     { }
@@ -122,8 +157,8 @@ namespace Gem
         crop.y = sourceRectangle->m_y;
 
         SDL_Rect cam;
-        cam.h = 640;
-        cam.w = 960;
+        cam.h = 640 / 15;
+        cam.w = 960 / 15;
         cam.x = crop.x;
         cam.y = crop.y;
 
